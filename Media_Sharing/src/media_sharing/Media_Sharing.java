@@ -18,6 +18,7 @@ public class Media_Sharing {
         // TODO code application logic here
         System.out.println("Hello World!!");
         System.out.println("Anggie cantik");
+        System.out.println("momom");
     }
     
 }
