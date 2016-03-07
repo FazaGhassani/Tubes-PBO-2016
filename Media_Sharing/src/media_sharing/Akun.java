@@ -50,6 +50,7 @@ public class Akun {
                     friends[i+1] = null;
                 }
             }
+            //---------------------//
             
         }else if(searchFriends(f) != 0){
             friends[searchFriends(f)] = null;
