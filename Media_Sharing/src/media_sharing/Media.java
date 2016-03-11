@@ -7,26 +7,34 @@ public class Media {
     private String nama;
     private int jmlhOrgdiTag;
     
-    //calender matter
+    /*//calender matter
     Calendar kalender;
     java.util.Date now = kalender.getTime();
     private java.sql.Timestamp tanggal;
-    //
+    //*/
 
     public Media(String nama) {
         this.nama = nama;
-        this.kalender = Calendar.getInstance();
+        //this.kalender = Calendar.getInstance();
         this.tagged = new Akun[5];
     }
     
-    public void setTanggal(){
+    public Media(){
+        this.tagged = new Akun[5];
+    }
+    
+    /*public void setTanggal(){
         tanggal = new java.sql.Timestamp(now.getTime());
     }
     
     public java.util.Date getTanggal(){
         return tanggal;
-    }
+    }*/
 
+    public String getNama() {
+        return nama;
+    }
+        
     public Akun getTagged(int i) {
         return tagged[i];
     }
@@ -40,10 +48,6 @@ public class Media {
                     jmlhOrgdiTag++;
                 }
             }
-    }
-
-    public String getNama() {
-        return nama;
     }
     
     public int getPersonTag(Akun cari){//termasuk search tag

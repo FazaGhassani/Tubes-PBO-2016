@@ -15,5 +15,9 @@ public class Video extends Media{
         super(nama);
     }
     
+    public Video(){
+        super();
+    }
+    
     
 }

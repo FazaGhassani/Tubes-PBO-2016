@@ -26,6 +26,13 @@ public class Akun {
         return namaAkun;
     }
     
+    public int getjmlTeman(){
+        return jmlteman;
+    }
+    public int getjmlhVideo(){
+        return jmlhVideo;
+    }
+    
     //========================================================================//
     //                      FRIENDZONE                                        //
     //========================================================================//
@@ -72,6 +79,11 @@ public class Akun {
         foto = new Foto[3];
     }
     
+    public int getjmlhFoto(){
+        return jmlhFoto;
+    }
+    
+/*    
     public int searchFoto(Akun f) {
         for (int i = 0; i <= 3; i++) {
             if (foto[i]== f.getFoto(i)) {
@@ -81,12 +93,12 @@ public class Akun {
         return -1;
     }
     
-    public Foto getFoto(int i) {
-        return foto[i];
-    }
-
     public void setFoto(Foto[] foto) {
         this.foto = foto;
+    }
+*/   
+    public Foto getFoto(int i) {
+        return foto[i];
     }
     
     public void addFoto(Foto f){
@@ -96,19 +108,16 @@ public class Akun {
         }
     }
     
+    //by index
     public void removeMediaFoto(int i){
-        
-        foto[i] = null;
-        if(i == 0){
-            for(int j=0;j<2;j++){
+        int k=0;
+        if(i != 2){
+            for(int j=i;j<foto.length-1 ;j++){
                 foto[j] = foto[j+1];
-                foto[j+1] = foto[j+2];
+                k = j+1;
             }
-        }else if(i == 1){
-            for(int j=0;j<1;j++){
-                foto[j+1]=foto[j+2];
-            }
-        }
+            foto[k] = new Foto();
+        }else{foto[i] = new Foto();}
     }
     
     //========================================================================//
@@ -121,6 +130,7 @@ public class Akun {
         video = new Video[2];
     }
  
+/*
     public int searchVideo(Akun f){
         for (int i=0; i<=2;i++){
             if(video[i] == f.getVideo(i)){
@@ -129,24 +139,25 @@ public class Akun {
         }
         return -1;
     }
+*/
 
     public Video getVideo(int i) {
         return video[i];
     }
     
     public void addVideo(Video v){
-        if (jmlhVideo <=2){
+        if (jmlhVideo < 3){
             video[jmlhVideo] = v;
             jmlhVideo++;
         }
     }
     
+    //by index
     public void removeMediaVideo(int i) {
-
-        video[i] = null;
         if (i == 0) {
             video[i] = video[i + 1];
-        }
+            video[i+1] = new Video();
+        }else{video[i] = new Video();}
     }
     //========================================================================//
     //========================================================================//
