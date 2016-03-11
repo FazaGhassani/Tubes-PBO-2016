@@ -17,15 +17,16 @@ public static void main(String[] args) {
     anggota1.followFriend(anggota6);
     
     System.out.println("Teman "+anggota1.getNamaAkun()+":");
-    System.out.println("1. "+anggota1.getFriend(0).getNamaAkun());
-    System.out.println("2. "+anggota1.getFriend(1).getNamaAkun());
-    System.out.println("3. "+anggota1.getFriend(2).getNamaAkun());
-    System.out.println("4. "+anggota1.getFriend(3).getNamaAkun());
-    System.out.println("5. "+anggota1.getFriend(4).getNamaAkun());
+    for(int i=0; i<5;i++){
+        System.out.println(i+". "+anggota1.getFriend(i).getNamaAkun());
+    }
+
+    System.out.println("Akun yang dicari: "+anggota1.getFriend(1).getNamaAkun());
+    System.out.println("teman yang dicari ada di index ke : "+anggota1.searchFriends(anggota3));
     
-    int p = anggota1.searchFriends(anggota3);
-    System.out.println("teman yang dicari ada di index ke : "+p);
-    
+    System.out.println("");
+    anggota1.removeFriend(anggota3);
+    System.out.println("teman yang dicari (Riki) ada di index ke : "+anggota1.searchFriends(anggota3));
     
     }
     

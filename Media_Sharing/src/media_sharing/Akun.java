@@ -53,7 +53,7 @@ public class Akun {
                 }
             }
             //---------------------//
-            
+            System.out.println("teman berhasil dihapus");
         }else if(searchFriends(f) != 0){
             friends[searchFriends(f)] = null;
         }else{System.out.println("tidak ada teman yang dihapus");}
@@ -61,11 +61,8 @@ public class Akun {
     
     //mencari sesuai nama
     public int searchFriends(Akun f){
-        System.out.println("");
-        System.out.println("Akun yang dicari: "+f.getNamaAkun());
         for(int i = 0; i<5;i++){
             if(friends[i] == f){
-                System.out.println("ketemu!");
                 return i;
             }
         }
@@ -73,8 +70,10 @@ public class Akun {
     }
     //========================================================================//
     //========================================================================//
-
-         
+    
+    //========================================================================//
+    //              MEDIA ZONE                                                //
+    //========================================================================//      
     public void createFoto(){
         foto = new Foto[3];
     }
@@ -86,7 +85,6 @@ public class Akun {
     public int searchVideo(Akun f){
         for (int i=0; i<=2;i++){
             if(video[i] == f.getVideo(i)){
-                System.out.println("ketemu!");
                 return i;
             }
         }
@@ -96,7 +94,6 @@ public class Akun {
     public int searchFoto(Akun f) {
         for (int i = 0; i <= 3; i++) {
             if (foto[i]== f.getFoto(i)) {
-                System.out.println("ketemu!");
                 return i;
             }
         }
