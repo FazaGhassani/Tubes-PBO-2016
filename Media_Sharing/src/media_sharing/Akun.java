@@ -1,7 +1,6 @@
 package media_sharing;
 
 public class Akun {
-    //private Media[] media;
     private Video[] video;
     private Foto[] foto;
     
@@ -22,10 +21,6 @@ public class Akun {
     public String getNamaAkun(){
         return namaAkun;
     }
-
-    //public createMedia(){}
-    //bagi jadi createVideo(){}
-    //bagi jadi createImage(){}
     
     //========================================================================//
     //                      FRIENDZONE                                        //
@@ -36,6 +31,10 @@ public class Akun {
             friends[jmlteman] = f;
             jmlteman++;
         }
+    }
+    
+    public Akun getFriend(int i){
+        return friends[i];
     }
     
     public void removeFriend(Akun f){
