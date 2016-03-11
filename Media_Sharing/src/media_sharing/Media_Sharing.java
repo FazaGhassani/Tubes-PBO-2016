@@ -23,6 +23,10 @@ public static void main(String[] args) {
     System.out.println("4. "+anggota1.getFriend(3).getNamaAkun());
     System.out.println("5. "+anggota1.getFriend(4).getNamaAkun());
     
+    int p = anggota1.searchFriends(anggota3);
+    System.out.println("teman yang dicari ada di index ke : "+p);
+    
+    
     }
     
 }

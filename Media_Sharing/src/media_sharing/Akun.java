@@ -61,47 +61,46 @@ public class Akun {
     
     //mencari sesuai nama
     public int searchFriends(Akun f){
-        int j=0;
+        System.out.println("");
+        System.out.println("Akun yang dicari: "+f.getNamaAkun());
         for(int i = 0; i<5;i++){
-            if(friends[i].getNamaAkun()== f.getNamaAkun()){
-                j = i;
+            if(friends[i] == f){
+                System.out.println("ketemu!");
+                return i;
             }
         }
-        if(friends[5].getNamaAkun() != f.getNamaAkun()){
-            j = -1;
-            System.out.println("Teman tidak ditemukan");
-        }
-        return j;
+        return -1;
     }
     //========================================================================//
     //========================================================================//
 
+         
+    public void createFoto(){
+        foto = new Foto[3];
+    }
+    
+    public void createVideo(){
+        video = new Video[2];
+    }
+ 
     public int searchVideo(Akun f){
-        int j=0;
-        for (int i=0; i<=5;i++){
-            if(video[i].getNama() == f.getVideo(i).getNama()){
-                j = i;
+        for (int i=0; i<=2;i++){
+            if(video[i] == f.getVideo(i)){
+                System.out.println("ketemu!");
+                return i;
             }
         }
-        if (video[5].getNama() != f.getVideo(j).getNama()){
-            j = -1;
-            System.out.println("Bukan video yang dicari");
-        }
-        return j;
+        return -1;
     }
     
     public int searchFoto(Akun f) {
-        int j = 0;
-        for (int i = 0; i <= 5; i++) {
-            if (foto[i].getNama() == f.getFoto(i).getNama()) {
-                j = i;
+        for (int i = 0; i <= 3; i++) {
+            if (foto[i]== f.getFoto(i)) {
+                System.out.println("ketemu!");
+                return i;
             }
         }
-        if (foto[5].getNama() != f.getFoto(j).getNama()) {
-            j = -1;
-            System.out.println("Bukan video yang dicari");
-        }
-        return j;
+        return -1;
     }
     
     
@@ -172,15 +171,7 @@ public class Akun {
             foto[f.searchFoto(f)] = null;
         }
     }
-     
-    public void createFoto(){
-        foto = new Foto[3];
-    }
-    
-    public void createVideo(){
-        video = new Video[2];
-    }
-    
+   
     public Foto getMediaFoto(int i){
         return foto[i];
     }
