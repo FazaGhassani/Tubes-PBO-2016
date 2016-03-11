@@ -18,7 +18,7 @@ public static void main(String[] args) {
     
     System.out.println("Teman "+anggota1.getNamaAkun()+":");
     for(int i=0; i<5;i++){
-        System.out.println(i+". "+anggota1.getFriend(i).getNamaAkun());
+        System.out.println((i+1)+". "+anggota1.getFriend(i).getNamaAkun());
     }
 
     System.out.println("Akun yang dicari: "+anggota1.getFriend(1).getNamaAkun());
@@ -28,6 +28,12 @@ public static void main(String[] args) {
     anggota1.removeFriend(anggota3);
     System.out.println("teman yang dicari (Riki) ada di index ke : "+anggota1.searchFriends(anggota3));
     
+    for(int j=0; j<5;j++){
+        System.out.println((j+1)+". "+anggota1.getFriend(j).getNamaAkun());
+    }
+    
+    //foto
+    anggota1.createFoto();
     }
     
 }

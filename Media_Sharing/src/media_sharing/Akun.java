@@ -18,6 +18,10 @@ public class Akun {
         friends = new Akun[5];
     }
     
+    public Akun(){
+        friends = new Akun[5];
+    }
+    
     public String getNamaAkun(){
         return namaAkun;
     }
@@ -38,24 +42,14 @@ public class Akun {
     }
     
     public void removeFriend(Akun f){
-        int i = 1;
-        if(searchFriends(f) != -1 && searchFriends(f) != 0){
-            friends[searchFriends(f)] = null;
-            
-            //majuin antrian ke depan//
-            for(int j=0;j<5;j++){
-                while(friends[i] == null && i<4){
-                    i++;
+        int i=0;
+            if(searchFriends(f) != -1){
+                for(int j = searchFriends(f); j<friends.length -1;j++){
+                    friends[j] = friends[j+1];
+                    i = j+1;
                 }
-                if(i<4){
-                    friends[i] = friends[i+1];
-                    friends[i+1] = null;
-                }
-            }
-            //---------------------//
+            friends[i] = new Akun();
             System.out.println("teman berhasil dihapus");
-        }else if(searchFriends(f) != 0){
-            friends[searchFriends(f)] = null;
         }else{System.out.println("tidak ada teman yang dihapus");}
     }
     
@@ -72,23 +66,10 @@ public class Akun {
     //========================================================================//
     
     //========================================================================//
-    //              MEDIA ZONE                                                //
+    //                      Foto ZONE                                         //
     //========================================================================//      
     public void createFoto(){
         foto = new Foto[3];
-    }
-    
-    public void createVideo(){
-        video = new Video[2];
-    }
- 
-    public int searchVideo(Akun f){
-        for (int i=0; i<=2;i++){
-            if(video[i] == f.getVideo(i)){
-                return i;
-            }
-        }
-        return -1;
     }
     
     public int searchFoto(Akun f) {
@@ -100,7 +81,6 @@ public class Akun {
         return -1;
     }
     
-    
     public Foto getFoto(int i) {
         return foto[i];
     }
@@ -108,73 +88,12 @@ public class Akun {
     public void setFoto(Foto[] foto) {
         this.foto = foto;
     }
-
-    public Video getVideo(int i) {
-        return video[i];
-    }
     
     public void addFoto(Foto f){
         if (jmlhFoto <= 3){
             foto[jmlhFoto] = f;
             jmlhFoto++;
         }
-    }
-    
-    public void addVideo(Video v){
-        if (jmlhVideo <=2){
-            video[jmlhVideo] = v;
-            jmlhVideo++;
-        }
-    }
-    
-    public void removeVideo (Akun f){
-        int i=1;
-        if (f.searchVideo(f) == -1){
-            System.out.println("Video tidak ditemukan");
-        } else if (f.searchVideo(f) != -1) {
-            video[f.searchVideo(f)] = null;
-            
-            for(int j=0;j<5;j++){
-                while(video[i] == null && i<4){
-                    i++;
-                }
-                if(i<4){
-                    video[i] = video[i+1];
-                    video[i+1] = null;
-                }
-            }
-        } else if (f.searchVideo(f) != 0){
-            video[f.searchVideo(f)] = null;
-        }
-    }
-    
-     public void removeFoto(Akun f) {
-        int i = 1;
-        if (f.searchFoto(f) == -1) {
-            System.out.println("Video tidak ditemukan");
-        } else if (f.searchFoto(f) != -1) {
-            foto[f.searchFoto(f)] = null;
-
-            for (int j = 0; j < 5; j++) {
-                while (foto[i] == null && i < 4) {
-                    i++;
-                }
-                if (i < 4) {
-                    foto[i] = foto[i + 1];
-                    foto[i + 1] = null;
-                }
-            }
-        } else if (f.searchFoto(f) != 0) {
-            foto[f.searchFoto(f)] = null;
-        }
-    }
-   
-    public Foto getMediaFoto(int i){
-        return foto[i];
-    }
-    
-    public Video getMediaVideo(int i){
-        return video[i];
     }
     
     public void removeMediaFoto(int i){
@@ -192,6 +111,36 @@ public class Akun {
         }
     }
     
+    //========================================================================//
+    //========================================================================//
+    
+    //========================================================================//
+    //                      Video ZONE                                        //
+    //========================================================================// 
+    public void createVideo(){
+        video = new Video[2];
+    }
+ 
+    public int searchVideo(Akun f){
+        for (int i=0; i<=2;i++){
+            if(video[i] == f.getVideo(i)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public Video getVideo(int i) {
+        return video[i];
+    }
+    
+    public void addVideo(Video v){
+        if (jmlhVideo <=2){
+            video[jmlhVideo] = v;
+            jmlhVideo++;
+        }
+    }
+    
     public void removeMediaVideo(int i) {
 
         video[i] = null;
@@ -199,4 +148,6 @@ public class Akun {
             video[i] = video[i + 1];
         }
     }
+    //========================================================================//
+    //========================================================================//
 }
