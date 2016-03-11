@@ -48,6 +48,7 @@ public class Akun {
         return friends[i];
     }
     
+    //by akun
     public void removeFriend(Akun f){
         int i=0;
             if(searchFriends(f) != -1){
@@ -57,7 +58,24 @@ public class Akun {
                 }
             friends[i] = new Akun();
             System.out.println("teman berhasil dihapus");
+            jmlteman--;
         }else{System.out.println("tidak ada teman yang dihapus");}
+    }
+    
+    //by index
+    public void removeFriend1(int i){
+        int k = 0;
+        if(i < jmlteman){
+            for(int j = i;j<friends.length -1;j++){
+                friends[j] = friends[j+1];
+                k = j+1;
+            }
+            friends[k] = new Akun();
+            jmlteman--;
+        }else{
+            friends[i] = new Akun();
+            jmlteman--;
+        }
     }
     
     //mencari sesuai nama
@@ -68,6 +86,14 @@ public class Akun {
             }
         }
         return -1;
+    }
+    
+    //mencari sesuai index
+    public Akun searchFriends1(int i){
+        if(i < jmlteman){
+            return friends[i];
+        }
+        return null;
     }
     //========================================================================//
     //========================================================================//
@@ -117,7 +143,11 @@ public class Akun {
                 k = j+1;
             }
             foto[k] = new Foto();
-        }else{foto[i] = new Foto();}
+            jmlhFoto--;
+        }else{
+            foto[i] = new Foto();
+            jmlhFoto--;
+        }
     }
     
     //========================================================================//
@@ -157,7 +187,11 @@ public class Akun {
         if (i == 0) {
             video[i] = video[i + 1];
             video[i+1] = new Video();
-        }else{video[i] = new Video();}
+            jmlhVideo--;
+        }else{
+            video[i] = new Video();
+            jmlhVideo--;
+        }
     }
     //========================================================================//
     //========================================================================//

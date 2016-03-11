@@ -39,44 +39,63 @@ public class Media {
         return tagged[i];
     }
     
+    public int getjmlhOrgdiTag(){
+        return jmlhOrgdiTag;
+    }
+    
     public void tagPerson(Akun punya,Akun cari){
-            if (punya.searchFriends(cari) == -1){
-                System.out.println("Belum memiliki teman");
-            } else {
-                for (int i=0; i<tagged.length; i++){
-                    tagged[jmlhOrgdiTag] = cari;
-                    jmlhOrgdiTag++;
-                }
-            }
+        if (punya.searchFriends(cari) == -1){
+                System.out.println("Akun belum berteman dengan yang akan di Tag");
+        } else {
+            tagged[jmlhOrgdiTag] = cari;
+            jmlhOrgdiTag++;
+            System.out.println("tag berhasil");
+        }
     }
     
     public int getPersonTag(Akun cari){//termasuk search tag
-        int j=0;
         for(int i=0; i<tagged.length; i++){
             if(tagged[i] == cari){
-                j = i;
+                return i;
             }
         }
-        return j;
+        return -1;
     }
+    
+    public Akun getPersonTag1(int i){
+        if(i <= jmlhOrgdiTag){
+            return tagged[i];
+        }
+        return null;
+    }
+    
     public void removePersonTag(Akun cari) {
-        int i = 1;
+        int i = 0;
         if (getPersonTag(cari) == -1) {
             System.out.println("Video tidak ditemukan");
         } else if (getPersonTag(cari)!= -1) {
-            tagged[getPersonTag(cari)] = null;
 
-            for (int j = 0; j < 5; j++) {
-                while (tagged[getPersonTag(cari)] == null && i < 4) {
-                    i++;
-                }
-                if (i < 4) {
-                    tagged[getPersonTag(cari)] = tagged[getPersonTag(cari) + 1];
-                    tagged[getPersonTag(cari) + 1] = null;
-                }
+            for (int j = 0; j < tagged.length -1; j++) {
+                tagged[j] = tagged[j+1];
+                i = j+1;
             }
-        } else if(getPersonTag(cari) != 0) {
-            tagged[getPersonTag(cari)] = null;
+            tagged[i] = new Akun();
+        }
+        jmlhOrgdiTag--;
+    }
+    
+    public void removePersonTag1(int i){
+        int k = 0;
+        if(i < jmlhOrgdiTag){
+            for(int j = i;j<tagged.length -1;j++){
+                tagged[j] = tagged[j+1];
+                k = j+1;
+            }
+            tagged[k] = new Akun();
+            jmlhOrgdiTag--;
+        }else{
+            tagged[i] = new Akun();
+            jmlhOrgdiTag--;
         }
     }
     
