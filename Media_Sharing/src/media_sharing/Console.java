@@ -153,10 +153,7 @@ public class Console {
             namafoto = namafo.readLine();
             
             Foto newfoto = new Foto(namafoto);
-            userakun.addFoto(newfoto);
-            
-            System.out.println("tag photo");
-            
+            userakun.addFoto(newfoto);   
             
         }catch(IOException e){
             e.printStackTrace(System.err);
@@ -204,13 +201,53 @@ public class Console {
         }else{System.out.println("Video tidak ditemukan");}
     }
     
-//tag person
-    public void tagPersonFoto(Akun userakun, Akun cari, String namafoto){
-        Akun nama;
-        nama = SearchAkunOrg();
-        if (nama == cari){
-            nama.getFoto(jmlhAkun)
+//tag person foto
+    public void tagPersonFoto(Akun userakun, String namafoto){
+        Akun cari;
+        cari = SearchAkunOrg();
+        
+        if(userakun.searchFoto(namafoto) != -1 && cari != null){
+            userakun.getFoto(userakun.searchFoto(namafoto)).tagPerson(userakun,cari);
+        }
+        
+    }
+    
+    //tag person video
+    public void tagPersonVideo(Akun userakun, String namavideo){
+        Akun cari;
+        cari = SearchAkunOrg();
+        
+        if(userakun.searchVideo(namavideo) != -1 && cari != null){
+            userakun.getVideo(userakun.searchVideo(namavideo)).tagPerson(userakun,cari);
         }
     }
+    
+    //remove tag person foto
+    public void RemovePersonTagFoto(Akun userakun, String namafoto){
+        Akun cari;
+        cari = SearchAkunOrg();
+        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Masukkan nama foto: ");
+        String foto = input.next();
+        
+        if(userakun.searchFoto(namafoto) != -1 && cari != null){
+            userakun.getFoto(userakun.searchFoto(namafoto)).removePersonTag(cari);
+        }
+    }
+    
+    //remove tag person video
+    public void RemovePersonTagVideo(Akun userakun, String namavideo){
+        Akun cari;
+        cari = SearchAkunOrg();
+        
+        Scanner input = new Scanner(System.in);
+        System.out.println("Masukkan nama video: ");
+        String video = input.next();
+        
+        if(userakun.searchVideo(namavideo) != -1 && cari != null){
+            userakun.getVideo(userakun.searchVideo(namavideo)).removePersonTag(cari);
+        }
+    }    
 }
 

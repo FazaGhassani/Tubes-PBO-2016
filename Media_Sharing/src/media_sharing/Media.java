@@ -72,7 +72,7 @@ public class Media {
     public void removePersonTag(Akun cari) {
         int i = 0;
         if (getPersonTag(cari) == -1) {
-            System.out.println("Video tidak ditemukan");
+            System.out.println("Orang tidak ditemukan");
         } else if (getPersonTag(cari)!= -1) {
 
             for (int j = 0; j < tagged.length -1; j++) {
