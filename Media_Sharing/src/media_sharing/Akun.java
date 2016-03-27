@@ -32,6 +32,11 @@ public class Akun {
     public int getjmlhVideo(){
         return jmlhVideo;
     }
+
+    public String getPassword() {
+        return password;
+    }
+    
     
     //========================================================================//
     //                      FRIENDZONE                                        //
@@ -109,10 +114,10 @@ public class Akun {
         return jmlhFoto;
     }
     
-/*    
-    public int searchFoto(Akun f) {
-        for (int i = 0; i <= 3; i++) {
-            if (foto[i]== f.getFoto(i)) {
+
+    public int searchFoto(String nama) {
+        for (int i = 0; i <= jmlhFoto; i++) {
+            if (foto[i].getNama() == nama) {
                 return i;
             }
         }
@@ -122,7 +127,7 @@ public class Akun {
     public void setFoto(Foto[] foto) {
         this.foto = foto;
     }
-*/   
+    
     public Foto getFoto(int i) {
         return foto[i];
     }
@@ -160,16 +165,15 @@ public class Akun {
         video = new Video[2];
     }
  
-/*
-    public int searchVideo(Akun f){
-        for (int i=0; i<=2;i++){
-            if(video[i] == f.getVideo(i)){
+
+    public int searchVideo(String nama){
+        for (int i=0; i<=jmlhVideo;i++){
+            if(video[i].getNama() == nama){
                 return i;
             }
         }
         return -1;
     }
-*/
 
     public Video getVideo(int i) {
         return video[i];
@@ -195,4 +199,5 @@ public class Akun {
     }
     //========================================================================//
     //========================================================================//
+
 }

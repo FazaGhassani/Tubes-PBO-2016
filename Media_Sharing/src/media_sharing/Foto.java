@@ -8,6 +8,10 @@ public class Foto extends Media{
         this.size = size;
     }
     
+    public Foto(String nama){
+        super(nama);
+    }
+    
     public Foto(){
         super();
     }
