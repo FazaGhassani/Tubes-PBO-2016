@@ -173,8 +173,8 @@ public class Console {
             Scanner input = new Scanner(System.in);
             int pil = input.nextInt();
             switch (pil){
-                case 'y': userakun.removeFriend(SearchAkunOrg());
-                case 'n': System.out.println("Tidak jadi mneghapus");
+                case 'y': userakun.removeFriend(SearchAkunOrg()); break;
+                case 'n': System.out.println("Tidak jadi mneghapus"); break;
             }
         }
     }
@@ -270,10 +270,6 @@ public class Console {
         Akun cari;
         cari = SearchAkunOrg();
         
-        Scanner input = new Scanner(System.in);
-        System.out.println("Masukkan nama foto: ");
-        String foto = input.next();
-        
         if(userakun.searchFoto(namafoto) != -1 && cari != null){
             userakun.getFoto(userakun.searchFoto(namafoto)).removePersonTag(cari);
         }
@@ -285,10 +281,6 @@ public class Console {
         Akun cari;
         cari = SearchAkunOrg();
         
-        Scanner input = new Scanner(System.in);
-        System.out.println("Masukkan nama video: ");
-        String video = input.next();
-        
         if(userakun.searchVideo(namavideo) != -1 && cari != null){
             userakun.getVideo(userakun.searchVideo(namavideo)).removePersonTag(cari);
         }
@@ -297,19 +289,39 @@ public class Console {
     
 //view video foto dan teman
     public void viewFoto(){
-        System.out.println("Foto yang dimiliki: "+userakun.getNamaAkun());
+        System.out.println("Foto yang dimiliki "+userakun.getNamaAkun());
         for(int j=0; j<userakun.getjmlhFoto();j++){
             System.out.println((j+1)+". "+userakun.getFoto(j).getNama());
         }
     }
     
     public void viewVideo(){
-        System.out.println("Video yang dimiliki: "+userakun.getNamaAkun());
+        System.out.println("Video yang dimiliki "+userakun.getNamaAkun());
         for(int j=0; j<userakun.getjmlhVideo();j++){
             System.out.println((j+1)+". "+userakun.getVideo(j).getNama());
         }
     }
+    
+    public void viewFriend(){
+        System.out.println("Teman "+userakun.getNamaAkun()+":");
+        for(int j=0; j<userakun.getjmlTeman();j++){
+            System.out.println((j+1)+". "+userakun.getFriend(j).getNamaAkun());
+        }
+    }
+    
+    public void viewTaggedFoto(int q){
+        System.out.println("Tag dalam foto "+userakun.getFoto(q)+":");
+        for(int j=0; j<userakun.getFoto(q).getjmlhOrgdiTag();j++){
+            System.out.println((j+1)+". "+userakun.getFoto(q).getTagged(j));
+        }
+    }
 //
+    public void viewTaggedVideo(int z){
+        System.out.println("Tag dalam foto "+userakun.getVideo(z)+":");
+        for(int j=0; j<userakun.getVideo(z).getjmlhOrgdiTag();j++){
+            System.out.println((j+1)+". "+userakun.getVideo(z).getTagged(j));
+        }
+    }
     
 //menu utama
 
@@ -333,7 +345,8 @@ public class Console {
         t = 'n';
         while (t == 'n'){
             String menu = toString2();
-            String namafoto, namavideo;
+            String namafoto, namavideo, ygdcari;
+            int n;
             System.out.println(menu);
             
             Scanner input = new Scanner(System.in);
@@ -364,12 +377,75 @@ public class Console {
                 removeVideo(userakun);
                 
             } else if (pil == 5){
-                System.out.println("v");
+                System.out.println("masukan username yang akan dicari: ");
+                ygdcari = input.next();
+                if(searchAkun2(ygdcari) != -1){
+                    if(userakun.searchFriends(daftarAkun[searchAkun2(ygdcari)]) != -1){
+                        System.out.println(toString4());
+                        n = input.nextInt();
+                        switch (n){
+                            case 1: RemoveFriend(userakun); break;
+                            case 2: System.out.println("Kembali ke menu Utama"); break;
+                        }
+                    }else if(userakun.searchFriends(daftarAkun[searchAkun2(ygdcari)]) == -1){
+                        System.out.println(toString3());
+                         n = input.nextInt();
+                        switch (n){
+                            case 1: FollowFriend(userakun,daftarAkun[searchAkun2(ygdcari)]); break;
+                            case 2: System.out.println("Kembali ke menu Utama"); break;
+                        }
+                    }
+                }else{System.out.println("User tidak ditemukan");}
     
             } else if (pil == 6){
                 System.out.println(userakun.toString());
                 viewFoto();
                 viewVideo();
+                viewFriend();
+                System.out.println(toString5());
+                n = input.nextInt();
+                switch (n){
+                    case 1:
+                        System.out.println("Masukan nama foto : ");
+                        namafoto = input.next(); 
+                        tagPersonFoto(userakun, namafoto);
+                        break;
+                    case 2: 
+                        System.out.println("Masukkan nama video : ");
+                        namavideo = input.next();
+                        tagPersonVideo(userakun, namavideo);
+                        break;
+                    case 3:
+                        System.out.println("Masukkan nama foto yang mau dihapus: ");
+                        namafoto = input.next();
+                        RemovePersonTagFoto(userakun, namafoto);
+                        break;
+                    case 4:
+                        System.out.println("Masukkan nama video yang mau dihapus: ");
+                        namavideo = input.next();
+                        RemovePersonTagVideo(userakun, namavideo);
+                        break;
+                    case 5:
+                        System.out.println("Nama Foto yang dicari: ");
+                        namafoto = input.next();
+                        if (userakun.searchFoto(namafoto) != -1){
+                            viewTaggedFoto(userakun.searchFoto(namafoto));
+                        }else {
+                            System.out.println("Foto tidak ditemukan");
+                        }
+                        break;
+                    case 6:
+                        System.out.println("Nama Video yang dicari: ");
+                        namavideo = input.next();
+                        if (userakun.searchFoto(namavideo) != -1){
+                            viewTaggedVideo(userakun.searchFoto(namavideo));
+                        }else {
+                            System.out.println("Video tidak ditemukan");
+                        }
+                        break;
+                    case 7:
+                        System.out.println("Kembali ke menu utama");
+                }
                 
             } else if (pil == 7){
                 daftarAkun[searchAkun2(userakun.getNamaAkun())] = userakun;
@@ -381,14 +457,14 @@ public class Console {
     }
     
     public String toString1(){
-        String x = " 1. Login "+
+        String x = " \n 1. Login "+
                    " \n 2. Signup "+
                    " \n Masukan Pilihan: ";
         return x;
     }
     
     public String toString2(){
-        String y = " 1. Add Foto "+
+        String y = " \n 1. Add Foto "+
                    " \n 2. Add Video "+
                    " \n 3. Remove Foto"+
                    " \n 4. Remove Video"+
@@ -397,6 +473,31 @@ public class Console {
                    " \n 7. Log out dan exit program"+
                    " \n Masukkan pilihan: ";
         return y;
+    }
+    
+    public String toString3(){
+        String z = "\n apa yang akan anda lakukan dengan user? "+
+                   "\n 1. follow "+
+                   "\n 2. back   ";
+        return z;
+    }
+    
+    public String toString4(){
+        String xi = "\n apa yang akan anda lakukan dengan user? "+
+                    "\n 1. unfollow "+
+                    "\n 2. back ";
+        return xi;
+    }
+    
+    public String toString5(){
+        String m = "\n 1. Tag Foto "+
+                   "\n 2. Tag Video"+
+                   "\n 3. Remove Tag Foto"+
+                   "\n 4. Remove Tag Video"+
+                   "\n 5. View Tag Foto"+
+                   "\n 6. View Tag Video"+
+                   "\n 7. Back";
+        return m;
     }
 }
 

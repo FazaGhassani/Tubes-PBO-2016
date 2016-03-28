@@ -20,11 +20,11 @@ public class Video extends Media{
     }
     
     public String toString(){
-        String video = "Nama video  : "+getNama()+
-                       "Teman        : "+getTagged(0).getNamaAkun()+", "+getTagged(1).getNamaAkun()
+        String video = "Nama video  : "+getNama();
+        /*               "Teman        : "+getTagged(0).getNamaAkun()+", "+getTagged(1).getNamaAkun()
                                        +", "+getTagged(2).getNamaAkun()+", "+getTagged(3).getNamaAkun()
                                        +", "+getTagged(4).getNamaAkun()+", "+getTagged(5).getNamaAkun();
-        return video;
+        */return video;
     }
     
 }
