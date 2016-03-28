@@ -117,7 +117,7 @@ public class Akun {
 
     public int searchFoto(String nama) {
         for (int i = 0; i <= jmlhFoto; i++) {
-            if (foto[i].getNama() == nama) {
+            if (foto[i].getNama().equals(nama)) {
                 return i;
             }
         }
@@ -168,7 +168,7 @@ public class Akun {
 
     public int searchVideo(String nama){
         for (int i=0; i<=jmlhVideo;i++){
-            if(video[i].getNama() == nama){
+            if(video[i].getNama().equals(nama)){
                 return i;
             }
         }

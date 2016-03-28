@@ -220,7 +220,7 @@ public class Console {
     public void removeFoto(Akun userakun){
         String namafoto;
         Scanner input = new Scanner(System.in);
-        System.out.print("Masukkan nama foto: ");
+        System.out.print("Masukkan nama foto yang ingin dihapus: ");
         namafoto = input.next();
         
         if(userakun.searchFoto(namafoto) != -1){
@@ -358,17 +358,23 @@ public class Console {
                 }
                 
             } else if (pil == 3){
-                System.out.println("2");
+                removeFoto(userakun);
                 
             } else if (pil == 4){
+                removeVideo(userakun);
+                
+            } else if (pil == 5){
+                System.out.println("v");
+    
+            } else if (pil == 6){
                 System.out.println(userakun.toString());
                 viewFoto();
                 viewVideo();
                 
-            } else if (pil == 5){
+            } else if (pil == 7){
                 daftarAkun[searchAkun2(userakun.getNamaAkun())] = userakun;
                 t = 'y';
-    
+                
             }
             
         }
@@ -384,9 +390,11 @@ public class Console {
     public String toString2(){
         String y = " 1. Add Foto "+
                    " \n 2. Add Video "+
-                   " \n 3. Cari teman "+
-                   " \n 4. lihat profil "+
-                   " \n 5. Log out dan exit program"+
+                   " \n 3. Remove Foto"+
+                   " \n 4. Remove Video"+
+                   " \n 5. Cari teman "+
+                   " \n 6. lihat profil "+
+                   " \n 7. Log out dan exit program"+
                    " \n Masukkan pilihan: ";
         return y;
     }
