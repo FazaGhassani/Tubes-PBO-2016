@@ -201,14 +201,15 @@ public class Akun {
     //========================================================================//
     
     public String toString(){
-        String akun = "Username : "+getNamaAkun()+
-                      "Foto     : "+getFoto(0).getNama()+", "+getFoto(1).getNama()+", "+
+        String akun = "Username : "+getNamaAkun();
+                      /*+"Foto     : "+getFoto(0).getNama()+", "+getFoto(1).getNama()+", "+
                                     getFoto(2).getNama()+", "+getFoto(3).getNama()+
                       "Video    : "+getVideo(0).getNama()+", "+getVideo(1).getNama()
                                    +", "+getVideo(2).getNama()+
                       "Teman    : "+getFriend(0).getNamaAkun()+", "+getFriend(1).getNamaAkun()
                                    +", "+getFriend(2).getNamaAkun()+", "+getFriend(3).getNamaAkun()
                                    +", "+getFriend(4).getNamaAkun()+", "+getFriend(5).getNamaAkun();
+        */
         return akun;
     }
 }

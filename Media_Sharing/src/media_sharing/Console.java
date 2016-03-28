@@ -1,12 +1,13 @@
 package media_sharing;
 
-
 import java.io.*;
 import java.util.Scanner;
 
 public class Console {
+    Akun userakun;
     Akun[] daftarAkun = new Akun[5];
     private int jmlhAkun=0;
+    char i, t;
     
     public void addAkun(Akun Akunbaru){
         if(jmlhAkun < 5){
@@ -27,9 +28,9 @@ public class Console {
     }
     
     public int searchAkun2(String namaakun){
-        for(int i = 0; i<5;i++){
-            if(daftarAkun[i].getNamaAkun() == namaakun){
-                return i;
+        for(int k = 0; k<jmlhAkun;k++){
+            if(daftarAkun[k].getNamaAkun().equals(namaakun)){
+                return k;
             }
         }
         return -1;
@@ -51,13 +52,39 @@ public class Console {
     }
     
     
-    //adda akun
+    //add akun by sign up
     public void MenuAddAkun(){
         String namauser;
         String passworduser;
         
         try{
-            System.out.println("Masukan username: ");
+            System.out.println("Masukan username baru: ");
+            InputStreamReader usr = new InputStreamReader(System.in);
+            BufferedReader usrn = new BufferedReader(usr);
+            namauser = usrn.readLine();
+            
+            System.out.println("Masukan Password baru: ");
+            InputStreamReader psw = new InputStreamReader(System.in);
+            BufferedReader pswr = new BufferedReader(psw);
+            passworduser = pswr.readLine();
+            
+            Akun baru = new Akun(namauser, passworduser);
+            baru.createFoto(); baru.createVideo();
+            addAkun(baru);
+        }catch(IOException e){
+            e.printStackTrace(System.err);
+        }
+    } 
+//
+    
+ // login
+    public void MenuLogin(){
+        String namauser;
+        String passworduser;
+        int indeks = 0;
+        
+        try{
+            System.out.println("Masukan username yang ada: ");
             InputStreamReader usr = new InputStreamReader(System.in);
             BufferedReader usrn = new BufferedReader(usr);
             namauser = usrn.readLine();
@@ -67,12 +94,18 @@ public class Console {
             BufferedReader pswr = new BufferedReader(psw);
             passworduser = pswr.readLine();
             
-            Akun baru = new Akun(namauser, passworduser);
-            addAkun(baru);
+            indeks = searchAkun2(namauser);
+            System.out.println(indeks);
+            if(indeks != -1){
+                userakun = daftarAkun[indeks];
+                System.out.println("anda sudah login");
+                i = 'y';
+            }else{System.out.println("Nama akun belum terdaftar");}
         }catch(IOException e){
             e.printStackTrace(System.err);
         }
-    }  
+    }
+//
     
 //menu delete
     public void MenuDeleteAkun(){
@@ -101,11 +134,13 @@ public class Console {
             e.printStackTrace(System.err);
         }
     }
+//
     
 //menu nge follow friends
     public void FollowFriend(Akun userakun, Akun fAkun){
         userakun.followFriend(fAkun);
     }
+//
 
 //public search 
     public Akun SearchAkunOrg(){
@@ -127,6 +162,7 @@ public class Console {
         
         return null;
     }
+//
 
 //menu remove friend
     public void RemoveFriend(Akun userakun){
@@ -142,6 +178,7 @@ public class Console {
             }
         }
     }
+//
     
 //menu add foto
     public void addPhoto(Akun userakun){
@@ -159,6 +196,7 @@ public class Console {
             e.printStackTrace(System.err);
         }
     }
+//
     
 //menu add video
     public void addVideo(Akun userakun){
@@ -176,6 +214,7 @@ public class Console {
             e.printStackTrace(System.err);
         }
     }
+//
 
 //remove media foto
     public void removeFoto(Akun userakun){
@@ -188,6 +227,7 @@ public class Console {
             userakun.removeMediaFoto(userakun.searchFoto(namafoto));
         }else{System.out.println("Foto tidak ditemukan");}
     }
+//
     
 //remove media video
     public void removeVideo(Akun userakun){
@@ -200,6 +240,7 @@ public class Console {
             userakun.removeMediaFoto(userakun.searchFoto(namavideo));
         }else{System.out.println("Video tidak ditemukan");}
     }
+//
     
 //tag person foto
     public void tagPersonFoto(Akun userakun, String namafoto){
@@ -211,8 +252,9 @@ public class Console {
         }
         
     }
+//
     
-    //tag person video
+//tag person video
     public void tagPersonVideo(Akun userakun, String namavideo){
         Akun cari;
         cari = SearchAkunOrg();
@@ -221,8 +263,9 @@ public class Console {
             userakun.getVideo(userakun.searchVideo(namavideo)).tagPerson(userakun,cari);
         }
     }
+//
     
-    //remove tag person foto
+//remove tag person foto
     public void RemovePersonTagFoto(Akun userakun, String namafoto){
         Akun cari;
         cari = SearchAkunOrg();
@@ -235,8 +278,9 @@ public class Console {
             userakun.getFoto(userakun.searchFoto(namafoto)).removePersonTag(cari);
         }
     }
+//
     
-    //remove tag person video
+//remove tag person video
     public void RemovePersonTagVideo(Akun userakun, String namavideo){
         Akun cari;
         cari = SearchAkunOrg();
@@ -248,6 +292,103 @@ public class Console {
         if(userakun.searchVideo(namavideo) != -1 && cari != null){
             userakun.getVideo(userakun.searchVideo(namavideo)).removePersonTag(cari);
         }
-    }    
+    }
+//
+    
+//view video foto dan teman
+    public void viewFoto(){
+        System.out.println("Foto yang dimiliki: "+userakun.getNamaAkun());
+        for(int j=0; j<userakun.getjmlhFoto();j++){
+            System.out.println((j+1)+". "+userakun.getFoto(j).getNama());
+        }
+    }
+    
+    public void viewVideo(){
+        System.out.println("Video yang dimiliki: "+userakun.getNamaAkun());
+        for(int j=0; j<userakun.getjmlhVideo();j++){
+            System.out.println((j+1)+". "+userakun.getVideo(j).getNama());
+        }
+    }
+//
+    
+//menu utama
+
+    public void MenuUtama(){ 
+        i = 'n';
+        while(i == 'n') {
+            String menulogin = toString1();
+        
+            System.out.println(menulogin);
+        
+            Scanner input = new Scanner(System.in);
+            int pilihan;
+            pilihan = input.nextInt();
+            if (pilihan == 1) {
+                MenuLogin();
+            } else if (pilihan == 2) {
+                MenuAddAkun();
+            } 
+        }
+        
+        t = 'n';
+        while (t == 'n'){
+            String menu = toString2();
+            String namafoto, namavideo;
+            System.out.println(menu);
+            
+            Scanner input = new Scanner(System.in);
+            int pil;
+            pil = input.nextInt();
+            if (pil == 1){
+                if(userakun.getjmlhFoto()<=3){
+                    System.out.println("Masukan nama foto: ");
+                    namafoto = input.next();
+                    Foto fotobaru = new Foto(namafoto);
+                    userakun.addFoto(fotobaru);
+                    System.out.println("foto sudah dimasukan");
+                }
+         
+            } else if (pil == 2){
+                if(userakun.getjmlhFoto()<=3){
+                    System.out.println("Masukan nama Video: ");
+                    namavideo = input.next();
+                    Video videobaru = new Video(namavideo);
+                    userakun.addVideo(videobaru);
+                    System.out.println("video sudah dimasukan");
+                }
+                
+            } else if (pil == 3){
+                System.out.println("2");
+                
+            } else if (pil == 4){
+                System.out.println(userakun.toString());
+                viewFoto();
+                viewVideo();
+                
+            } else if (pil == 5){
+                daftarAkun[searchAkun2(userakun.getNamaAkun())] = userakun;
+                t = 'y';
+    
+            }
+            
+        }
+    }
+    
+    public String toString1(){
+        String x = " 1. Login "+
+                   " \n 2. Signup "+
+                   " \n Masukan Pilihan: ";
+        return x;
+    }
+    
+    public String toString2(){
+        String y = " 1. Add Foto "+
+                   " \n 2. Add Video "+
+                   " \n 3. Cari teman "+
+                   " \n 4. lihat profil "+
+                   " \n 5. Log out dan exit program"+
+                   " \n Masukkan pilihan: ";
+        return y;
+    }
 }
 
