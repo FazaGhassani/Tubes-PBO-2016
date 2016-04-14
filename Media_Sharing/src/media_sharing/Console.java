@@ -1,253 +1,137 @@
 package media_sharing;
 
 
-import java.io.*;
-import java.util.Scanner;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Console {
-    Akun[] daftarAkun = new Akun[5];
+    Akun UserAkun;
+    private ArrayList<Akun> daftarAkun = new ArrayList<>();
     private int jmlhAkun=0;
+    char i, t;
+    
+    
+    public ArrayList<Akun> getDaftarAkun() {
+        return daftarAkun;
+    }
     
     public void addAkun(Akun Akunbaru){
         if(jmlhAkun < 5){
-            daftarAkun[jmlhAkun] = Akunbaru;
+            //daftarAkun[jmlhAkun] = Akunbaru;
+            getDaftarAkun().add(Akunbaru);
             jmlhAkun++;
         }else{System.out.println("Akun sudah penuh");}   
     }
     
-    public Akun getAkun(int ID){
-        return daftarAkun[ID];
-    }
-    
-    public Akun searchAkun(int i){
-        if(i < jmlhAkun){
-            return daftarAkun[i];
+    public Akun searchAkun(String nama){
+        Akun Acari = null;
+        for (Akun c : getDaftarAkun()) {
+            if (c.getNamaAkun().equals(nama)) {
+                Acari = c;
+            }
         }
         return null;
     }
     
-    public int searchAkun2(String namaakun){
-        for(int i = 0; i<5;i++){
-            if(daftarAkun[i].getNamaAkun() == namaakun){
-                return i;
-            }
-        }
-        return -1;
+    public void deleteAkun(Akun DAkun){
+        getDaftarAkun().remove(DAkun);
+        jmlhAkun = jmlhAkun -1;
     }
     
-    public void deleteAkun(int ID){
-        int k = 0;
-        if(ID < jmlhAkun){
-            for(int j = ID;j<daftarAkun.length -1;j++){
-                daftarAkun[j] = daftarAkun[j+1];
-                k = j+1;
-            }
-            daftarAkun[k] = new Akun();
-            jmlhAkun--;
-        }else{
-            daftarAkun[ID] = new Akun();
-            jmlhAkun--;
-        }
+    public void followFriend(Akun userAkun, Akun fAkun){
+        userAkun.followFriend(fAkun);
     }
     
-    
-    //adda akun
-    public void MenuAddAkun(){
-        String namauser;
-        String passworduser;
-        
-        try{
-            System.out.println("Masukan username: ");
-            InputStreamReader usr = new InputStreamReader(System.in);
-            BufferedReader usrn = new BufferedReader(usr);
-            namauser = usrn.readLine();
-            
-            System.out.println("Masukan Password: ");
-            InputStreamReader psw = new InputStreamReader(System.in);
-            BufferedReader pswr = new BufferedReader(psw);
-            passworduser = pswr.readLine();
-            
-            Akun baru = new Akun(namauser, passworduser);
-            addAkun(baru);
-        }catch(IOException e){
-            e.printStackTrace(System.err);
-        }
-    }  
-    
-//menu delete
-    public void MenuDeleteAkun(){
-        String nama;
-        String pass;
-        try{
-            System.out.println("Masukan username yang akan dihapus: ");
-            InputStreamReader usrn = new InputStreamReader(System.in);
-            BufferedReader usrna = new BufferedReader(usrn);
-            nama = usrna.readLine();
-
-            if (searchAkun2(nama) != -1) {
-                System.out.println("Masukan Password: ");
-                InputStreamReader pswr = new InputStreamReader(System.in);
-                BufferedReader pswrd = new BufferedReader(pswr);
-                pass = pswrd.readLine();
-
-                if (daftarAkun[searchAkun2(nama)].getPassword() == pass) {
-                    deleteAkun(searchAkun2(nama));
-                }else{
-                    System.out.println("Password tidak sesuai dengan username");
-                }
-            }else{System.out.println("tidak ada username akun tsb");}
-            
-        }catch(IOException e){
-            e.printStackTrace(System.err);
-        }
-    }
-    
-//menu nge follow friends
-    public void FollowFriend(Akun userakun, Akun fAkun){
-        userakun.followFriend(fAkun);
-    }
-
-//public search 
-    public Akun SearchAkunOrg(){
-        String nama;
-        
-        try{
-            System.out.println("Masukan username yang akan dicari: ");
-            InputStreamReader usrn = new InputStreamReader(System.in);
-            BufferedReader usrna = new BufferedReader(usrn);
-            nama = usrna.readLine();
-            
-            if(searchAkun2(nama) != -1){
-                return daftarAkun[searchAkun2(nama)];
-            }
-            
-        }catch(IOException e){
-            e.printStackTrace(System.err);
-        }
-        
+    public Akun seachFriend(String cnama){
+        Akun cari = new Akun(cnama,cnama);
+        if(UserAkun.searchFriends(cari) != null){
+            return UserAkun.searchFriends(cari);
+        }else{JOptionPane.showMessageDialog(null, "Teman tidak ditemukan");}
         return null;
     }
+    
+    public void removeFriend(String nama){
+        Akun cari = new Akun(nama,nama);
+        UserAkun.removeFriend(cari);
+    }
+    
+    public void addPhoto(Foto f){
+        UserAkun.addFoto(f);
+    }
+    
+    public void addVideo(Video v){
+        UserAkun.addVideo(v);
+    }
+    
+    public void removeFoto(Foto f){
+        UserAkun.removeMediaFoto(f);
+    }
+    
+    public void removeVideo(Video v){
+        UserAkun.removeMediaVideo(v);
+    }
+    
+    public void tagPersonFoto(Akun namaAkun, String namafoto){
+        Foto f = new Foto(namafoto);
+        
+        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).tagPerson(UserAkun,namaAkun);
+        }
+    }
+    
+    public void tagPersonVideo(Akun namaAkun, String namavideo){
+        Video v = new Video(namavideo);
+        
+        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).tagPerson(UserAkun,namaAkun);
+        }
+    }
+    
+    public void RemovePersonTagFoto(Akun namaAkun, String namafoto){
+        Foto f = new Foto(namafoto);
+        
+        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).removePersonTag(namaAkun);
+        }
+    }
+    
+    public void RemovePersonTagVideo(Akun namaAkun, String namavideo){
+        Video v = new Video(namavideo);
+        
+        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).removePersonTag(namaAkun);
+        }
+    }
+    
+    public void ViewFoto(){
+        for(Foto f: UserAkun.getFoto()){
+            f.toString();
+        }
+    }
+    
+    public void ViewVideo(){
+        for(Video v:UserAkun.getVideo()){
+            v.toString();
+        }
+    }
+    
+    public void ViewFriend(){
+        for(Akun c : UserAkun.getFriends()){
+            c.toString();
+        }
+    }
+    
+    public void ViewTaggedFoto(Foto f){
+        for(Akun c : f.getTagged()){
+            c.toString();
+        }
+    }
+    
+    public void ViewTaggedVideo(Video v){
+        for(Akun c : v.getTagged()){
+            c.toString();
+        }
+    }
 
-//menu remove friend
-    public void RemoveFriend(Akun userakun){
-        Akun fdelete = SearchAkunOrg();
-        if(fdelete != null){
-            System.out.println("anda yakin akan menghapus "+fdelete.getNamaAkun()+"?");
-            System.out.println("1. yes / 2. no");
-            Scanner input = new Scanner(System.in);
-            int pil = input.nextInt();
-            switch (pil){
-                case 'y': userakun.removeFriend(SearchAkunOrg());
-                case 'n': System.out.println("Tidak jadi mneghapus");
-            }
-        }
-    }
     
-//menu add foto
-    public void addPhoto(Akun userakun){
-        String namafoto;
-        try{
-            System.out.println("Masukan nama foto: ");
-            InputStreamReader namaf = new InputStreamReader(System.in);
-            BufferedReader namafo = new BufferedReader(namaf);
-            namafoto = namafo.readLine();
-            
-            Foto newfoto = new Foto(namafoto);
-            userakun.addFoto(newfoto);   
-            
-        }catch(IOException e){
-            e.printStackTrace(System.err);
-        }
-    }
-    
-//menu add video
-    public void addVideo(Akun userakun){
-        String namaVideo;
-        try{
-            System.out.println("Masukan nama video: ");
-            InputStreamReader namav = new InputStreamReader(System.in);
-            BufferedReader namavi = new BufferedReader(namav);
-            namaVideo = namavi.readLine();
-            
-            Video newvideo = new Video(namaVideo);
-            userakun.addVideo(newvideo);
-            
-        }catch(IOException e){
-            e.printStackTrace(System.err);
-        }
-    }
-
-//remove media foto
-    public void removeFoto(Akun userakun){
-        String namafoto;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Masukkan nama foto: ");
-        namafoto = input.next();
-        
-        if(userakun.searchFoto(namafoto) != -1){
-            userakun.removeMediaFoto(userakun.searchFoto(namafoto));
-        }else{System.out.println("Foto tidak ditemukan");}
-    }
-    
-//remove media video
-    public void removeVideo(Akun userakun){
-        String namavideo;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Masukkan nama video: ");
-        namavideo = input.next();
-        
-        if(userakun.searchFoto(namavideo) != -1){
-            userakun.removeMediaFoto(userakun.searchFoto(namavideo));
-        }else{System.out.println("Video tidak ditemukan");}
-    }
-    
-//tag person foto
-    public void tagPersonFoto(Akun userakun, String namafoto){
-        Akun cari;
-        cari = SearchAkunOrg();
-        
-        if(userakun.searchFoto(namafoto) != -1 && cari != null){
-            userakun.getFoto(userakun.searchFoto(namafoto)).tagPerson(userakun,cari);
-        }
-        
-    }
-    
-    //tag person video
-    public void tagPersonVideo(Akun userakun, String namavideo){
-        Akun cari;
-        cari = SearchAkunOrg();
-        
-        if(userakun.searchVideo(namavideo) != -1 && cari != null){
-            userakun.getVideo(userakun.searchVideo(namavideo)).tagPerson(userakun,cari);
-        }
-    }
-    
-    //remove tag person foto
-    public void RemovePersonTagFoto(Akun userakun, String namafoto){
-        Akun cari;
-        cari = SearchAkunOrg();
-        
-        Scanner input = new Scanner(System.in);
-        System.out.println("Masukkan nama foto: ");
-        String foto = input.next();
-        
-        if(userakun.searchFoto(namafoto) != -1 && cari != null){
-            userakun.getFoto(userakun.searchFoto(namafoto)).removePersonTag(cari);
-        }
-    }
-    
-    //remove tag person video
-    public void RemovePersonTagVideo(Akun userakun, String namavideo){
-        Akun cari;
-        cari = SearchAkunOrg();
-        
-        Scanner input = new Scanner(System.in);
-        System.out.println("Masukkan nama video: ");
-        String video = input.next();
-        
-        if(userakun.searchVideo(namavideo) != -1 && cari != null){
-            userakun.getVideo(userakun.searchVideo(namavideo)).removePersonTag(cari);
-        }
-    }    
 }
-
