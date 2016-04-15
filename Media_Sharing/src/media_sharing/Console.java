@@ -6,21 +6,22 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Console {
-    Akun UserAkun;
+    Akun UserAkun = new Akun();
+    Akun UserLain;
+    
     private ArrayList<Akun> daftarAkun = new ArrayList<>();
     private int jmlhAkun=0;
     char i, t;
     
-	 public ArrayList<Akun> getDaftarAkun() {
+    public ArrayList<Akun> getDaftarAkun() {
         return daftarAkun;
     }
 	
     public void addAkun(Akun Akunbaru){
         if(jmlhAkun < 5){
-            //daftarAkun[jmlhAkun] = Akunbaru;
             daftarAkun.add(Akunbaru);
             jmlhAkun++;
-        }else{System.out.println("Akun sudah penuh");}   
+        }else{JOptionPane.showMessageDialog(null, "Akun Sudah Penuh");}   
     }
     
     public Akun searchAkun(String nama){
@@ -54,13 +55,13 @@ public class Console {
         userAkun.followFriend(fAkun);
     }
     
-    public Akun seachFriend(String cnama){
-        Akun cari = new Akun(cnama,cnama);
-        if(UserAkun.searchFriends(cari) != null){
-            return UserAkun.searchFriends(cari);
-        }else{JOptionPane.showMessageDialog(null, "Teman tidak ditemukan");}
-        return null;
-    }
+//    public Akun seachFriend(String cnama){
+//        Akun cari = new Akun(cnama,cnama);
+//        if(UserAkun.searchFriends(cari) != null){
+//            return UserAkun.searchFriends(cari);
+//        }else{JOptionPane.showMessageDialog(null, "Teman tidak ditemukan");}
+//        return null;
+//    }
     
     public void removeFriend(String nama){
         Akun cari = new Akun(nama,nama);

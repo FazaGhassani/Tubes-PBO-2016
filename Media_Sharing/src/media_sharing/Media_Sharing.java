@@ -1,9 +1,9 @@
 package media_sharing;
-
+//
 public class Media_Sharing {
-
-public static void main(String[] args) {
-    
+//
+//public static void main(String[] args) {
+//    
 //    //pertemanan
 //    Akun anggota1 = new Akun("Ganis","mewmewpower");
 //    Akun anggota2 = new Akun("Anggie","cantik");
@@ -127,5 +127,5 @@ public static void main(String[] args) {
 //        System.out.println((j+1)+". "+anggota1.getFoto(0).getTagged(j).getNamaAkun());
 //    }
     
-  } 
+//  } 
 }

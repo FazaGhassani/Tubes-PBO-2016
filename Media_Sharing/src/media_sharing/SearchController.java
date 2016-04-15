@@ -11,6 +11,8 @@ public class SearchController extends MouseAdapter implements ActionListener{
     private Console model;
     private HalamanSearch view;
     private String namadiCari;
+    private String status;
+    Akun k;
     
     public SearchController(Console model, HalamanSearch view, String namadiCari){
         this.model = model;
@@ -45,7 +47,6 @@ public class SearchController extends MouseAdapter implements ActionListener{
             if(view.getSearchLabel().getText() .equals("")){
                 view.getKlikokLabel().setText("");
                 view.getSearchLabel().setText(namadiCari);
-                Akun k;
                 if(model.searchAkun(namadiCari) != null){
                     k = model.searchAkun(namadiCari);
                     view.getAkunButton().setText(k.getNamaAkun());
@@ -66,14 +67,16 @@ public class SearchController extends MouseAdapter implements ActionListener{
             if(view.getAkunButton().getText().equals("")){
                 JOptionPane.showMessageDialog(view, "klik ok, atau ketikan username terlebih dahulu");
             }else{
-                //kalau udah di follow
-                HalamanUserStlhFollow HUSF = new HalamanUserStlhFollow();
-                HUSF.setController(new UserLainStlh(model, new HalamanUserStlhFollow()));
-                view.setVisible(false);
-                view.dispose();
-                //kalau belum di follow
+                //nyari orang//
+                if(model.UserAkun.searchFriends(k) == null){
+                    status = "follow";
+                }else if(model.UserAkun.searchFriends(k) != null){
+                    status = "unfollow";
+                }
+                model.UserLain = k;
+                
                 HalamanUserLainSblmFollow HULSBF = new HalamanUserLainSblmFollow();
-                HULSBF.setController(new UserLainSblm(model, new HalamanUserLainSblmFollow()));
+                HULSBF.setController(new UserLainSblm(model, new HalamanUserLainSblmFollow(), status));
                 view.setVisible(false);
                 view.dispose();
             }
