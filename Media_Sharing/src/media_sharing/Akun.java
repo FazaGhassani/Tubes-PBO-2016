@@ -22,6 +22,8 @@ public class Akun {
         this.namaAkun = namaAkun;
         this.password = password;
         friends = new ArrayList<>();
+        createFoto();
+        createVideo();
     }
     
     public Akun(){
@@ -158,6 +160,17 @@ public class Akun {
         return null;
     }
     
+    public int searchFoto2(String foto){
+        int indeks = 0;
+        for(Foto  Fc : getFoto()){
+            if(Fc.getNama().equals(foto)){
+                return indeks;
+            }
+            indeks++;
+        }
+        return -1;
+    }
+    
     public ArrayList<Foto> getFoto() {
         return foto;
     }
@@ -170,6 +183,7 @@ public class Akun {
         if (jmlhFoto <= 3){
             foto.add(f);
             jmlhFoto++;
+            JOptionPane.showMessageDialog(null, "Foto Berhasil dimasukan");
         }else{JOptionPane.showMessageDialog(null,"Foto sudah melebihi kapasitas");}
     }
     
@@ -251,6 +265,16 @@ public class Akun {
         return null;
     }
     
+    public int searchVideo2(String video){
+        int indeks = 0;
+        for(Video  Fc : getVideo()){
+            if(Fc.getNama().equals(foto)){
+                return indeks;
+            }
+            indeks++;
+        }
+        return -1;
+    }
     public void addVideo(Video v){
         if (jmlhVideo < 3){
             video.add(v);

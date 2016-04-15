@@ -1,7 +1,8 @@
 package media_sharing;
 
-
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class Console {
@@ -10,31 +11,42 @@ public class Console {
     private int jmlhAkun=0;
     char i, t;
     
-    
-    public ArrayList<Akun> getDaftarAkun() {
+	 public ArrayList<Akun> getDaftarAkun() {
         return daftarAkun;
     }
-    
+	
     public void addAkun(Akun Akunbaru){
         if(jmlhAkun < 5){
             //daftarAkun[jmlhAkun] = Akunbaru;
-            getDaftarAkun().add(Akunbaru);
+            daftarAkun.add(Akunbaru);
             jmlhAkun++;
         }else{System.out.println("Akun sudah penuh");}   
     }
     
     public Akun searchAkun(String nama){
         Akun Acari = null;
-        for (Akun c : getDaftarAkun()) {
+        for (Akun c : daftarAkun) {
             if (c.getNamaAkun().equals(nama)) {
                 Acari = c;
+                return Acari;
             }
         }
         return null;
     }
     
+    public int searchAkuns(String nama){
+        int indeks = 0;
+        for(Akun c : daftarAkun){
+            if(c.getNamaAkun().equals(nama)){
+                return indeks;
+            }
+            indeks++;
+        }
+        return -1;
+    }
+    
     public void deleteAkun(Akun DAkun){
-        getDaftarAkun().remove(DAkun);
+        daftarAkun.remove(DAkun);
         jmlhAkun = jmlhAkun -1;
     }
     
@@ -116,7 +128,7 @@ public class Console {
     }
     
     public void ViewFriend(){
-        for(Akun c : UserAkun.getFriends()){
+        for(Akun c:UserAkun.getFriends()){
             c.toString();
         }
     }
@@ -132,6 +144,18 @@ public class Console {
             c.toString();
         }
     }
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //view foto dan video
+    //view tagged video dan foto
+    
     
 }

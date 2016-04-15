@@ -42,12 +42,11 @@ public class LoginController implements ActionListener{
                     if(cari.getNamaAkun().equals(n.getNamaAkun())&& cari.getPassword().equals(n.getPassword())){
                         ne = n;
                         model.UserAkun = ne;
-                        model.getDaftarAkun().remove(n);
+                        model.getDaftarAkun().remove(model.searchAkuns(n.getNamaAkun()));
                         JOptionPane.showMessageDialog(null, "LOGIN SUKSES");
                         HalamanUtama HU = new HalamanUtama();
                         HU.setController(new UtamController(model, new HalamanUtama()));
                         view.setVisible(false);
-                        view.dispose();
                     }
                 }
                 if(ne == null){
@@ -56,5 +55,4 @@ public class LoginController implements ActionListener{
             }
         }
     }
-    
 }

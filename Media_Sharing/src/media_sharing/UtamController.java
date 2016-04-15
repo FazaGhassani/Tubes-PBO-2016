@@ -3,10 +3,13 @@ package media_sharing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 
 
-public class UtamController implements ActionListener{
+public class UtamController extends MouseAdapter implements ActionListener{
     
     private Console model;
     private HalamanUtama view;
@@ -15,7 +18,20 @@ public class UtamController implements ActionListener{
         this.model = model;
         this.view=view;
         this.view.setController(this);
+        view.MouseListener(this);
         this.view.setVisible(true);
+        view.getjLabel1().setText(model.UserAkun.getNamaAkun());
+    }
+    
+    @Override
+    public void mouseClicked(MouseEvent e){
+        Object source = e.getSource();
+        if (source.equals(view.getProfilLabel())){
+           HalamanUserSendiri HUS = new HalamanUserSendiri();
+           HUS.setController(new UserSendiriController(model, new HalamanUserSendiri()));
+           view.setVisible(false);
+           view.dispose();
+        }
     }
     
     @Override
@@ -24,6 +40,7 @@ public class UtamController implements ActionListener{
         if (source.equals(view.getLogoutButton())){
             MenuAwal MA = new MenuAwal();
             MA.setController(new MenuAwalController(model));
+            model.getDaftarAkun().add(model.UserAkun);
             view.setVisible(false);
             view.dispose();
         }else if(source.equals(view.getOkButton())){
@@ -34,8 +51,18 @@ public class UtamController implements ActionListener{
                 HS.setController(new SearchController(model, new HalamanSearch(), cari));
                 view.setVisible(false);
                 view.dispose();
-            }else{view.getSearchLabel().setText("masukan username");}
-        }
+            }else{view.getSearchLabel().setText("Masukan Username");}
+        }else if(source.equals(view.getVButton())){
+            HalamanUploadVideo HUV = new HalamanUploadVideo();
+            HUV.setController(new HalamanUploadVideoController(model,new HalamanUploadVideo()));
+            view.setVisible(false);
+            view.dispose();
+        }else if (source.equals(view.getFButton())){
+            HalamanUploadFoto HUF = new HalamanUploadFoto();
+            HUF.setController(new HalamanUploadFotoController(model,new HalamanUploadFoto()));
+            view.setVisible(false);
+            view.dispose();
+        } 
     }
     
 }

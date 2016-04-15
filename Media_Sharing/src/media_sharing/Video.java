@@ -5,24 +5,25 @@
  */
 package media_sharing;
 
+import java.io.File;
+
 /**
  *
  * @author User
  */
 public class Video extends Media{
     
-    public Video (String nama){
-        super(nama);
+    public Video (String nama, File f){
+        super(nama,f);
     }
     
-    public Video(){
-        super();
+    public Video(String nama){
+        super(nama);
     }
     
     public String toString(){
         String video = "Nama video  : "+getNama();
         return video;
     }
-    
     
 }

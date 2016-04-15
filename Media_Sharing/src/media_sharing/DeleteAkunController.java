@@ -8,6 +8,7 @@ package media_sharing;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import sun.print.resources.serviceui;
 
 /**
  *
@@ -44,7 +45,7 @@ public class DeleteAkunController implements ActionListener {
                 for(Akun cari : model.getDaftarAkun()){
                     if(cari.getNamaAkun().equals(n.getNamaAkun())&& cari.getPassword().equals(n.getPassword())){
                         ne = n;
-                        model.getDaftarAkun().remove(ne);
+                        model.getDaftarAkun().remove(model.searchAkuns(n.getNamaAkun()));
                         JOptionPane.showMessageDialog(view, "Delete sukses");
                     }
                 }

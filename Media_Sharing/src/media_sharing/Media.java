@@ -1,5 +1,6 @@
 package media_sharing;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -9,6 +10,13 @@ public class Media {
     private ArrayList<Akun> tagged;
     private String nama;
     private int jmlhOrgdiTag;
+    private File dirc;
+
+    public Media(String nama, File f) {
+        this.nama = nama;
+        this.tagged = new ArrayList<>();
+        this.dirc=f;
+    }
 
     public Media(String nama) {
         this.nama = nama;
