@@ -65,15 +65,33 @@ public class Akun {
         }
     }
     
+    public void removeFriends(Akun f){
+        if(seachFriends(f) != -1){
+            getFriends().remove(seachFriends(f));
+            jmlteman--;
+        }
+    }
+    
     public Akun searchFriends(Akun cari){
         Akun Acari = null;
         for (Akun c : getFriends()) {
-            if (c.getNamaAkun().equals(cari.getNamaAkun())) {
+            if (c == Acari) {
                 Acari = c;
                 return Acari;
             }
         }
         return null;
+    }
+    
+    public int seachFriends(Akun cari){
+        int indeks =0;
+        for(Akun c : getFriends()){
+            if(c == cari){
+                return indeks;
+            }
+            indeks++;
+        }
+        return -1;
     }
     
     
