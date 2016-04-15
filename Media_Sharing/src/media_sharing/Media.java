@@ -1,42 +1,38 @@
 package media_sharing;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 public class Media {
-    private Akun[] tagged;
+    //private Akun[] tagged;
+    private ArrayList<Akun> tagged;
     private String nama;
     private int jmlhOrgdiTag;
-    
-    /*//calender matter
-    Calendar kalender;
-    java.util.Date now = kalender.getTime();
-    private java.sql.Timestamp tanggal;
-    //*/
+    private File dirc;
+
+    public Media(String nama, File f) {
+        this.nama = nama;
+        this.tagged = new ArrayList<>();
+        this.dirc=f;
+    }
 
     public Media(String nama) {
         this.nama = nama;
-        //this.kalender = Calendar.getInstance();
-        this.tagged = new Akun[5];
+        this.tagged = new ArrayList<>();
     }
     
     public Media(){
-        this.tagged = new Akun[5];
+        this.tagged = new ArrayList<>();
     }
-    
-    /*public void setTanggal(){
-        tanggal = new java.sql.Timestamp(now.getTime());
-    }
-    
-    public java.util.Date getTanggal(){
-        return tanggal;
-    }*/
 
     public String getNama() {
         return nama;
     }
-        
-    public Akun getTagged(int i) {
-        return tagged[i];
+    
+    public ArrayList<Akun> getTagged() {
+        return tagged;
     }
     
     public int getjmlhOrgdiTag(){
@@ -44,59 +40,76 @@ public class Media {
     }
     
     public void tagPerson(Akun punya,Akun cari){
-        if (punya.searchFriends(cari) == -1){
-                System.out.println("Akun belum berteman dengan yang akan di Tag");
+        if (punya.searchFriends(cari) == null){
+                JOptionPane.showMessageDialog(null,"Akun belum berteman dengan yang akan di Tag");
         } else {
-            tagged[jmlhOrgdiTag] = cari;
+            tagged.add(cari);
             jmlhOrgdiTag++;
-            System.out.println("tag berhasil");
+            JOptionPane.showMessageDialog(null,"tag berhasil");
         }
-    }
-    
-    public int getPersonTag(Akun cari){//termasuk search tag
-        for(int i=0; i<tagged.length; i++){
-            if(tagged[i] == cari){
-                return i;
-            }
-        }
-        return -1;
-    }
-    
-    public Akun getPersonTag1(int i){
-        if(i <= jmlhOrgdiTag){
-            return tagged[i];
-        }
-        return null;
     }
     
     public void removePersonTag(Akun cari) {
-        int i = 0;
-        if (getPersonTag(cari) == -1) {
-            System.out.println("Orang tidak ditemukan");
-        } else if (getPersonTag(cari)!= -1) {
+        if(getPersonTag(cari)!=null){
+            tagged.remove(cari);
+        }
+    }
+        
+    public Akun getPersonTag(Akun cari){
+        for(Akun c : tagged){
+            if (c.getNamaAkun().equals(cari.getNamaAkun())) {
+                 return c;
+            }
+        }
+        return null;
+    }
 
-            for (int j = 0; j < tagged.length -1; j++) {
-                tagged[j] = tagged[j+1];
-                i = j+1;
-            }
-            tagged[i] = new Akun();
-        }
-        jmlhOrgdiTag--;
-    }
     
-    public void removePersonTag1(int i){
-        int k = 0;
-        if(i < jmlhOrgdiTag){
-            for(int j = i;j<tagged.length -1;j++){
-                tagged[j] = tagged[j+1];
-                k = j+1;
-            }
-            tagged[k] = new Akun();
-            jmlhOrgdiTag--;
-        }else{
-            tagged[i] = new Akun();
-            jmlhOrgdiTag--;
-        }
-    }
+//    public void tagPerson(Akun punya,Akun cari){
+//        if (punya.searchFriends(cari) == -1){
+//                System.out.println("Akun belum berteman dengan yang akan di Tag");
+//        } else {
+//            tagged[jmlhOrgdiTag] = cari;
+//            jmlhOrgdiTag++;
+//            System.out.println("tag berhasil");
+//        }
+//    }
+    
+//    public Akun getPersonTag1(int i){
+//        if(i <= jmlhOrgdiTag){
+//            return getTagged()[i];
+//        }
+//        return null;
+//    }
+    
+//    public void removePersonTag(Akun cari) {
+//        int i = 0;
+//        if (getPersonTag(cari) == -1) {
+//            System.out.println("Orang tidak ditemukan");
+//        } else if (getPersonTag(cari)!= -1) {
+//
+//            for (int j = 0; j < getTagged().length -1; j++) {
+//                tagged[j] = getTagged()[j+1];
+//                i = j+1;
+//            }
+//            tagged[i] = new Akun();
+//        }
+//        jmlhOrgdiTag--;
+//    }
+    
+//    public void removePersonTag1(int i){
+//        int k = 0;
+//        if(i < jmlhOrgdiTag){
+//            for(int j = i;j<getTagged().length -1;j++){
+//                tagged[j] = getTagged()[j+1];
+//                k = j+1;
+//            }
+//            tagged[k] = new Akun();
+//            jmlhOrgdiTag--;
+//        }else{
+//            tagged[i] = new Akun();
+//            jmlhOrgdiTag--;
+//        }
+//    }
     
 }
