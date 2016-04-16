@@ -9,6 +9,10 @@ public class Foto extends Media{
         super(nama, f);
     }
     
+    public Foto(){
+    
+    }
+    
     public Foto(String nama){
         super(nama);
     }

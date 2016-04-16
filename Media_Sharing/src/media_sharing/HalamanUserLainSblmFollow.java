@@ -5,7 +5,9 @@
  */
 package media_sharing;
 
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -31,7 +33,7 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
 
         jTextField8 = new javax.swing.JTextField();
         OkButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        ViphoLabel = new javax.swing.JLabel();
         SearchLabel = new javax.swing.JTextField();
         LogoutButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -53,8 +55,8 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
         OkButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         OkButton.setText("OK");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("VIPHO");
+        ViphoLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ViphoLabel.setText("VIPHO");
 
         SearchLabel.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -76,7 +78,7 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel1)
+                .addComponent(ViphoLabel)
                 .addGap(70, 70, 70)
                 .addComponent(SearchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,7 +120,7 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(ViphoLabel)
                     .addComponent(SearchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OkButton)
@@ -190,7 +192,7 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
     private javax.swing.JButton OkButton;
     private javax.swing.JTextField SearchLabel;
     private javax.swing.JButton VButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel ViphoLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
@@ -253,6 +255,21 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
     public void setjLabel2(javax.swing.JLabel jLabel2) {
         this.jLabel2 = jLabel2;
     }
+
+    public JLabel getjLabel1() {
+        return ViphoLabel;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.ViphoLabel = jLabel1;
+    }
     
-    
+     public void MouseListener (MouseListener e){
+        ViphoLabel.addMouseListener(e);
+    }
+
+    public JLabel getViphoLabel() {
+        return ViphoLabel;
+    }
+     
 }

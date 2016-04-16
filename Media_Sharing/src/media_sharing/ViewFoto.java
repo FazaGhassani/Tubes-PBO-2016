@@ -48,7 +48,7 @@ public class ViewFoto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TagPersonButton.setText("Tag Person");
+        TagPersonButton.setText("Remove Tag Person");
         TagPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TagPersonButtonActionPerformed(evt);

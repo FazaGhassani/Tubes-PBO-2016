@@ -7,12 +7,14 @@ package media_sharing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
  * @author User
  */
-public class UserLainSblm implements ActionListener{
+public class UserLainSblm extends MouseAdapter implements ActionListener{
     private Console model;
     private HalamanUserLainSblmFollow view;
     private String status;
@@ -22,6 +24,7 @@ public class UserLainSblm implements ActionListener{
         this.view = view;
         view.setController(this);
         view.setVisible(true);
+        view.MouseListener(this);
         this.status = status;
         view.getjLabel2().setText(model.UserLain.getNamaAkun());
         if(status.equals("follow")){
@@ -31,6 +34,17 @@ public class UserLainSblm implements ActionListener{
         }
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e){
+        Object source = e.getSource();
+        if (source.equals(view.getViphoLabel())){
+           HalamanUtama HU = new HalamanUtama();
+           HU.setController(new UtamController(model, new HalamanUtama()));
+           view.setVisible(false);
+           view.dispose();
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -69,7 +83,7 @@ public class UserLainSblm implements ActionListener{
                 status = "follow";
                 view.getFollowButton().setText("follow");
             }
-        }
+        } 
     }
     
     
