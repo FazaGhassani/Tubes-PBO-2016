@@ -22,6 +22,7 @@ public class HalamanUploadFotoController extends MouseAdapter implements ActionL
     private Console model;
     private HalamanUploadFoto view;
     private File f;
+    private String stats = "foto";
 
     public HalamanUploadFotoController(Console model, HalamanUploadFoto view) {
         this.model = model;
@@ -80,8 +81,20 @@ public class HalamanUploadFotoController extends MouseAdapter implements ActionL
             if(view.getNamaFotoText().getText().equals("")){
                 JOptionPane.showMessageDialog(view, "Silahkan masukan caption");
             }else{
-                model.UserAkun.addFoto(new Foto(view.getNamaFotoText().getText(),f));
+                model.Baru.setNama(view.getNamaFotoText().getText());
+                model.Baru.setDirc(f);
+                model.UserAkun.addFoto(model.Baru);
+                JOptionPane.showMessageDialog(view, "Foto terupload");
             }  
+        }else if (source.equals(view.getTagPersonButton())){
+//            if(model.Baru.getDirc()== null){
+//                JOptionPane.showMessageDialog(view, "Masukan foto dulu");
+//            }else{
+                HalamanSearch HS = new HalamanSearch();
+                HS.setControllers(new TagPersonController(model, new HalamanSearch(),stats));
+                view.setVisible(false);
+                view.dispose(); 
+//            }
         }
     }
     

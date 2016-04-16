@@ -22,6 +22,7 @@ public class HalamanUploadVideoController extends MouseAdapter implements Action
     private Console model;
     private HalamanUploadVideo view;
     File f;
+    private String stats = "video";
 
     public HalamanUploadVideoController(Console model, HalamanUploadVideo view) {
         this.model = model;
@@ -79,10 +80,18 @@ public class HalamanUploadVideoController extends MouseAdapter implements Action
             if(view.getNamaVideoText().getText().equals("")){
                 JOptionPane.showMessageDialog(view, "Silahkan masukan caption");
             }else{
-                model.UserAkun.addVideo(new Video(view.getNamaVideoText().getText(),f));
-            }  
-  
-        }       
+                model.VBaru.setNama(view.getNamaVideoText().getText());
+                model.VBaru.setDirc(f);
+                model.UserAkun.addVideo(model.VBaru);
+                JOptionPane.showMessageDialog(view, "Video terupload");
+            }   
+        } else if (source.equals(view.getTagPersonButton())){
+            HalamanSearch HS = new HalamanSearch();
+            HS.setControllers(new TagPersonController(model, new HalamanSearch(),stats));
+            view.setVisible(false);
+            view.dispose();
+            
+        } 
     }
     
     

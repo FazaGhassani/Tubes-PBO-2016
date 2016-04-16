@@ -23,6 +23,14 @@ public class SearchController extends MouseAdapter implements ActionListener{
         this.namadiCari = namadiCari;
     }
     
+     public SearchController(Console model, HalamanSearch view){
+        this.model = model;
+        this.view = view;
+        this.view.setController(this);
+        view.MouseListener(this);
+        this.view.setVisible(true);
+    }
+    
     @Override
     public void mouseClicked(MouseEvent e){
         Object source = e.getSource();
@@ -41,6 +49,7 @@ public class SearchController extends MouseAdapter implements ActionListener{
         if (source.equals(view.getLogoutButton())){
             MenuAwal MA = new MenuAwal();
             MA.setController(new MenuAwalController(model));
+            model.getDaftarAkun().add(model.UserAkun);
             view.setVisible(false);
             view.dispose();
         }else if(source.equals(view.getOkButton())){
@@ -67,7 +76,6 @@ public class SearchController extends MouseAdapter implements ActionListener{
             if(view.getAkunButton().getText().equals("")){
                 JOptionPane.showMessageDialog(view, "klik ok, atau ketikan username terlebih dahulu");
             }else{
-                //nyari orang//
                 if(model.UserAkun.searchFriends(k) == null){
                     status = "follow";
                 }else if(model.UserAkun.searchFriends(k) != null){

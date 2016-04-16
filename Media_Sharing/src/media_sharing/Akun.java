@@ -83,6 +83,17 @@ public class Akun {
         return null;
     }
     
+    public Akun friendSearch(String nama){
+        Akun Acari = null;
+        for (Akun c : getFriends()) {
+            if (c.getNamaAkun().equals(nama)) {
+                Acari = c;
+                return Acari;
+            }
+        }
+        return null;
+    }
+    
     public int seachFriends(Akun cari){
         int indeks =0;
         for(Akun c : getFriends()){

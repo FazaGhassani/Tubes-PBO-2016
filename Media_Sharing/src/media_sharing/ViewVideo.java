@@ -48,7 +48,7 @@ public class ViewVideo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TagPersonButton.setText("Tag Person");
+        TagPersonButton.setText("Remove Tag Person");
         TagPersonButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TagPersonButtonActionPerformed(evt);
@@ -59,7 +59,7 @@ public class ViewVideo extends javax.swing.JFrame {
 
         DeleteTagButton.setText("Delete Tag");
 
-        DeleteVideoButton.setText("Delete Video");
+        DeleteVideoButton.setText("Delete Foto");
 
         OkButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         OkButton.setText("OK");

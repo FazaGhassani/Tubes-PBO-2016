@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 public class Console {
     Akun UserAkun = new Akun();
     Akun UserLain;
+    Foto Baru = new Foto();
+    Video VBaru = new Video();
     
     private ArrayList<Akun> daftarAkun = new ArrayList<>();
     private int jmlhAkun=0;
@@ -84,21 +86,21 @@ public class Console {
         UserAkun.removeMediaVideo(v);
     }
     
-    public void tagPersonFoto(Akun namaAkun, String namafoto){
-        Foto f = new Foto(namafoto);
-        
-        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
-            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).tagPerson(UserAkun,namaAkun);
-        }
-    }
+//    public void tagPersonFoto(Akun namaAkun, String namafoto){
+//        Foto f = new Foto(namafoto);
+//        
+//        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+//            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).tagPerson(UserAkun,namaAkun);
+//        }
+//    }
     
-    public void tagPersonVideo(Akun namaAkun, String namavideo){
-        Video v = new Video(namavideo);
-        
-        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
-            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).tagPerson(UserAkun,namaAkun);
-        }
-    }
+//    public void tagPersonVideo(Akun namaAkun, String namavideo){
+//        Video v = new Video(namavideo);
+//        
+//        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+//            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).tagPerson(UserAkun,namaAkun);
+//        }
+//    }
     
     public void RemovePersonTagFoto(Akun namaAkun, String namafoto){
         Foto f = new Foto(namafoto);

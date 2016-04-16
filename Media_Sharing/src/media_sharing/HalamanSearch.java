@@ -143,6 +143,7 @@ public class HalamanSearch extends javax.swing.JFrame {
 //    }
     
     private SearchController controller;
+    private TagPersonController con;
     
     public void setController(SearchController controller){
         this.controller = controller;
@@ -151,6 +152,15 @@ public class HalamanSearch extends javax.swing.JFrame {
         getAkunButton().addActionListener(controller);
         getVButton().addActionListener(controller);
         getFButton().addActionListener(controller);
+    }
+    
+    public void setControllers(TagPersonController controllers){
+        this.con = controllers;
+        getLogoutButton().addActionListener(controllers);
+        getOkButton().addActionListener(controllers);
+        getAkunButton().addActionListener(controllers);
+        getVButton().addActionListener(controllers);
+        getFButton().addActionListener(controllers);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

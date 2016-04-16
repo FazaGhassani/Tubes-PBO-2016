@@ -21,6 +21,9 @@ public class Video extends Media{
         super(nama);
     }
     
+    public Video(){
+    }
+    
     public String toString(){
         String video = "Nama video  : "+getNama();
         return video;

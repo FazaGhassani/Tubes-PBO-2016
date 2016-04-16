@@ -6,11 +6,22 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 public class Media {
-    //private Akun[] tagged;
     private ArrayList<Akun> tagged;
     private String nama;
     private int jmlhOrgdiTag;
     private File dirc;
+
+    public File getDirc() {
+        return dirc;
+    }
+
+    public void setDirc(File dirc) {
+        this.dirc = dirc;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
     public Media(String nama, File f) {
         this.nama = nama;
@@ -39,14 +50,9 @@ public class Media {
         return jmlhOrgdiTag;
     }
     
-    public void tagPerson(Akun punya,Akun cari){
-        if (punya.searchFriends(cari) == null){
-                JOptionPane.showMessageDialog(null,"Akun belum berteman dengan yang akan di Tag");
-        } else {
-            tagged.add(cari);
+    public void tagPerson(Akun cari){
+            getTagged().add(cari);
             jmlhOrgdiTag++;
-            JOptionPane.showMessageDialog(null,"tag berhasil");
-        }
     }
     
     public void removePersonTag(Akun cari) {
