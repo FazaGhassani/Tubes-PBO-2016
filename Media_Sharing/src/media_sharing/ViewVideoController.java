@@ -23,8 +23,10 @@ public class ViewVideoController extends MouseAdapter implements ActionListener{
     public ViewVideoController(Console model, ViewVideo view) {
         this.model = model;
         this.view = view;
-        view.setController(this);
-        view.setVisible(true);
+        this.view.setController(this);
+        this.view.setVisible(true);
+        this.view.getjLabel2().setText(video.getNama());
+        //display
     }
     
     @Override
@@ -74,6 +76,9 @@ public class ViewVideoController extends MouseAdapter implements ActionListener{
             HUS.setController(new UserSendiriController(model, new HalamanUserSendiri()));
             view.setVisible(false);
             view.dispose();
+        }else if (source.equals(view.getTagPersonButton())){
+            model.UserAkun.getVideo().get(model.UserAkun.searchVideotoIndex(video)).removeAllTagged();
+            JOptionPane.showMessageDialog(view, "Semua tag telah dihapus");
         }
     }
     

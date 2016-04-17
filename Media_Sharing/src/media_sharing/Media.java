@@ -55,10 +55,8 @@ public class Media {
             jmlhOrgdiTag++;
     }
     
-    public void removePersonTag(Akun cari) {
-        if(getPersonTag(cari)!=null){
-            tagged.remove(cari);
-        }
+    public void removeAllTagged(){
+        this.tagged = new ArrayList<>();
     }
         
     public Akun getPersonTag(Akun cari){

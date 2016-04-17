@@ -18,15 +18,17 @@ import javax.swing.JOptionPane;
 public class ViewFotoController extends MouseAdapter implements ActionListener{
     private Console model;
     private ViewFoto view;
-    private Foto foto;
+    private Foto foto; //foto yang dipanggil di userakun disamakan disini
 
     public ViewFotoController(Console model, ViewFoto view, Foto foto) {
         this.model = model;
         this.view = view;
         this.foto = foto;
-        view.setController(this);
-        view.setVisible(true);
-        view.MouseListener(this);
+        this.view.setController(this);
+        this.view.setVisible(true);
+        this.view.MouseListener(this);
+        this.view.getjLabel2().setText(foto.getNama());
+        //display
     }
 
     @Override
@@ -71,12 +73,14 @@ public class ViewFotoController extends MouseAdapter implements ActionListener{
         } else if (source.equals(view.getDeleteFotoButton())){
             model.UserAkun.getFoto().remove(model.UserAkun.searchFoto2(foto.getNama()));
             JOptionPane.showMessageDialog(view, "Foto telah dihapus");
+            
             HalamanUserSendiri HUS = new HalamanUserSendiri();
             HUS.setController(new UserSendiriController(model, new HalamanUserSendiri()));
             view.setVisible(false);
             view.dispose();
         } else if (source.equals(view.getTagPersonButton())){
-           // model.UserAkun.getFriends().add(model.UserAkun.searchFriends(cari));
+            model.UserAkun.getFoto().get(model.UserAkun.searchFototoIndex(foto)).removeAllTagged();
+            JOptionPane.showMessageDialog(view, "Semua tag telah dihapus");
         }
     }
 }

@@ -42,11 +42,8 @@
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="TagPersonButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NamaVideoText" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                      <Component id="TagPersonButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="DeleteTagButton" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="DeleteVideoButton" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -81,10 +78,7 @@
                   <Component id="DeleteTagButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NamaVideoText" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="DeleteVideoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="DeleteVideoButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -113,8 +107,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete Foto"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="NamaVideoText">
     </Component>
     <Component class="javax.swing.JButton" name="OkButton">
       <Properties>

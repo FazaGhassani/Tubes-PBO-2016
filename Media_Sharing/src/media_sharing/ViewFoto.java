@@ -36,7 +36,6 @@ public class ViewFoto extends javax.swing.JFrame {
         LogoutButton = new javax.swing.JButton();
         DeleteTagButton = new javax.swing.JButton();
         DeleteFotoButton = new javax.swing.JButton();
-        NamaVideoText = new javax.swing.JTextField();
         OkButton = new javax.swing.JButton();
         VButton = new javax.swing.JButton();
         FButton = new javax.swing.JButton();
@@ -101,17 +100,16 @@ public class ViewFoto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TagPersonButton)
-                            .addComponent(NamaVideoText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(166, 166, 166)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DeleteTagButton)
-                            .addComponent(DeleteFotoButton)))
                     .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(TagPersonButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(DeleteTagButton)
+                                .addComponent(DeleteFotoButton)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +131,7 @@ public class ViewFoto extends javax.swing.JFrame {
                     .addComponent(TagPersonButton)
                     .addComponent(DeleteTagButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NamaVideoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DeleteFotoButton))
+                .addComponent(DeleteFotoButton)
                 .addGap(27, 27, 27))
         );
 
@@ -186,7 +182,6 @@ public class ViewFoto extends javax.swing.JFrame {
     private javax.swing.JButton DeleteTagButton;
     private javax.swing.JButton FButton;
     private javax.swing.JButton LogoutButton;
-    private javax.swing.JTextField NamaVideoText;
     private javax.swing.JButton OkButton;
     private javax.swing.JTextField SearchLabel;
     private javax.swing.JButton TagPersonButton;

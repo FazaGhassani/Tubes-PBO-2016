@@ -101,22 +101,22 @@ public class Console {
 //            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).tagPerson(UserAkun,namaAkun);
 //        }
 //    }
+//    
+//    public void RemovePersonTagFoto(Akun namaAkun, String namafoto){
+//        Foto f = new Foto(namafoto);
+//        
+//        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+//            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).removePersonTag(namaAkun);
+//        }
+//    }
     
-    public void RemovePersonTagFoto(Akun namaAkun, String namafoto){
-        Foto f = new Foto(namafoto);
-        
-        if(UserAkun.searchFoto(f)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
-            UserAkun.getFoto().get(UserAkun.searchFototoIndex(f)).removePersonTag(namaAkun);
-        }
-    }
-    
-    public void RemovePersonTagVideo(Akun namaAkun, String namavideo){
-        Video v = new Video(namavideo);
-        
-        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
-            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).removePersonTag(namaAkun);
-        }
-    }
+//    public void RemovePersonTagVideo(Akun namaAkun, String namavideo){
+//        Video v = new Video(namavideo);
+//        
+//        if(UserAkun.searchVideo(v)!=null && searchAkun(namaAkun.getNamaAkun()) != null){
+//            UserAkun.getVideo().get(UserAkun.searchVideotoIndex(v)).removePersonTag(namaAkun);
+//        }
+//    }
     
     public void ViewFoto(){
         for(Foto f: UserAkun.getFoto()){

@@ -36,7 +36,6 @@ public class ViewVideo extends javax.swing.JFrame {
         LogoutButton = new javax.swing.JButton();
         DeleteTagButton = new javax.swing.JButton();
         DeleteVideoButton = new javax.swing.JButton();
-        NamaVideoText = new javax.swing.JTextField();
         OkButton = new javax.swing.JButton();
         VButton = new javax.swing.JButton();
         FButton = new javax.swing.JButton();
@@ -102,10 +101,8 @@ public class ViewVideo extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TagPersonButton)
-                            .addComponent(NamaVideoText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(166, 166, 166)
+                        .addComponent(TagPersonButton)
+                        .addGap(193, 193, 193)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DeleteTagButton)
                             .addComponent(DeleteVideoButton)))
@@ -133,9 +130,7 @@ public class ViewVideo extends javax.swing.JFrame {
                     .addComponent(TagPersonButton)
                     .addComponent(DeleteTagButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NamaVideoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DeleteVideoButton))
+                .addComponent(DeleteVideoButton)
                 .addGap(27, 27, 27))
         );
 
@@ -186,7 +181,6 @@ public class ViewVideo extends javax.swing.JFrame {
     private javax.swing.JButton DeleteVideoButton;
     private javax.swing.JButton FButton;
     private javax.swing.JButton LogoutButton;
-    private javax.swing.JTextField NamaVideoText;
     private javax.swing.JButton OkButton;
     private javax.swing.JTextField SearchLabel;
     private javax.swing.JButton TagPersonButton;
@@ -231,6 +225,10 @@ public class ViewVideo extends javax.swing.JFrame {
 
     public JLabel getViphoLabel() {
         return ViphoLabel;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
     }
 
     public void setViphoLabel(JLabel ViphoLabel) {
