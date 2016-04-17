@@ -11,10 +11,14 @@ masuk ke dalam apliasi:
 -user sign up dan log in menggunakan username dan password
 
 berinteraksi dengan user lain:
--ketikan nama user lain di kotak search
--klik nama user lain untuk melihat
--klik follow untuk memfollow, klik unfollow untuk unfollow user lain
+- ketikan nama user lain di kotak search
+- klik nama user lain untuk melihat
+- klik follow untuk memfollow, klik unfollow untuk unfollow user lain
 
 berinteraksi dengan media:
--klik V untuk masuk ke halaman upload video
--klik F untuk masuk ke halaman upload foto
+- klik V untuk masuk ke halaman upload video
+- klik F untuk masuk ke halaman upload foto
+- isikan kotak indeks untuk melihat foto
+- klik hapus foto untuk menghapus foto
+- klik remove tag untuk menghapus semua tag
+
