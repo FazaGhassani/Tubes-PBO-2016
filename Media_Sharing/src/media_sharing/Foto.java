@@ -26,7 +26,8 @@ public class Foto extends Media{
     }
     
     public String toString(){
-        String foto = "Nama foto    : "+getNama();
+        String foto = "Nama foto    : "+getNama()
+                + "/n ";
         return foto;
     }
 }

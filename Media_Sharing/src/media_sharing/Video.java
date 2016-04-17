@@ -22,6 +22,7 @@ public class Video extends Media{
     }
     
     public Video(){
+        
     }
     
     public String toString(){

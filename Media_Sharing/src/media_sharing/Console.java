@@ -118,34 +118,44 @@ public class Console {
 //        }
 //    }
     
-    public void ViewFoto(){
+    public String ViewFoto(){
+        String s ="";
         for(Foto f: UserAkun.getFoto()){
-            f.toString();
+            return s = f.toString();
         }
+        return s = "";
     }
     
-    public void ViewVideo(){
+    public String ViewVideo(){
+        String s = "";
         for(Video v:UserAkun.getVideo()){
-            v.toString();
+            return s = v.toString();
         }
+        return s = "";
     }
     
-    public void ViewFriend(){
+    public String ViewFriend(){
+        String s = "";
         for(Akun c:UserAkun.getFriends()){
-            c.toString();
+            return c.toString();
         }
+        return s = "";
     }
     
-    public void ViewTaggedFoto(Foto f){
+    public String ViewTaggedFoto(Foto f){
+        String s = "";
         for(Akun c : f.getTagged()){
-            c.toString();
+            return c.toString();
         }
+        return s = "";
     }
     
-    public void ViewTaggedVideo(Video v){
+    public String ViewTaggedVideo(Video v){
+        String s = "";
         for(Akun c : v.getTagged()){
-            c.toString();
+            return c.toString();
         }
+        return s = "";
     }
     
     

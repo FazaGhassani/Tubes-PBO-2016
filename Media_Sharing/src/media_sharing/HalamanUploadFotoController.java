@@ -76,7 +76,6 @@ public class HalamanUploadFotoController extends MouseAdapter implements ActionL
             j.showOpenDialog(view);
             f = j.getSelectedFile();
             
-            //tinggal display
         }else if(source.equals(view.getUploadButton())){
             if(view.getNamaFotoText().getText().equals("")){
                 JOptionPane.showMessageDialog(view, "Silahkan masukan caption");
@@ -87,9 +86,6 @@ public class HalamanUploadFotoController extends MouseAdapter implements ActionL
                 JOptionPane.showMessageDialog(view, "Foto terupload");
             }  
         }else if (source.equals(view.getTagPersonButton())){
-//            if(model.Baru.getDirc()== null){
-//                JOptionPane.showMessageDialog(view, "Masukan foto dulu");
-//            }else{
                 HalamanSearch HS = new HalamanSearch();
                 HS.setControllers(new TagPersonController(model, new HalamanSearch(),stats));
                 view.setVisible(false);

@@ -71,7 +71,7 @@ public class ViewFotoController extends MouseAdapter implements ActionListener{
             view.setVisible(false);
             view.dispose();
         } else if (source.equals(view.getDeleteFotoButton())){
-            model.UserAkun.getFoto().remove(model.UserAkun.searchFoto2(foto.getNama()));
+            model.UserAkun.removeMediaFoto(foto);
             JOptionPane.showMessageDialog(view, "Foto telah dihapus");
             
             HalamanUserSendiri HUS = new HalamanUserSendiri();

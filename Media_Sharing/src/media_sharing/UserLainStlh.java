@@ -25,6 +25,7 @@ public class UserLainStlh extends MouseAdapter implements ActionListener{
         view.setController(this);
         view.setVisible(true);
         view.MouseListener(this);
+        view.getjLabel2().setText(model.UserAkun.getNamaAkun());
         if(status.equals("follow")){
             view.getUnfollowButton().setText("Follow");
         }else if(status.equals("unfollow")){

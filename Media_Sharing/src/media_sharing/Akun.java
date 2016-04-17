@@ -218,7 +218,7 @@ public class Akun {
     
     public void removeMediaFoto(Foto f){
         if(searchFoto(f)!=null){
-            foto.remove(f);
+            foto.remove(searchFoto2(f.getNama()));
             jmlhFoto--;
         }else{JOptionPane.showMessageDialog(null,"Tidak ada foto yang bisa dihapus");}
     }
@@ -304,6 +304,7 @@ public class Akun {
         }
         return -1;
     }
+    
     public void addVideo(Video v){
         if (jmlhVideo < 3){
             video.add(v);
@@ -313,7 +314,7 @@ public class Akun {
     
     public void removeMediaVideo(Video v) {
        if(searchVideo(v)!=null){
-            video.remove(v);
+            video.remove(searchVideo2(v.getNama()));
             jmlhVideo--;
        }else{JOptionPane.showMessageDialog(null,"Tidak ada Video yang dihapus");}
     }

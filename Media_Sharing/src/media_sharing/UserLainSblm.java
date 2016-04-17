@@ -32,6 +32,14 @@ public class UserLainSblm extends MouseAdapter implements ActionListener{
         }else if(status.equals("unfollow")){
             view.getFollowButton().setText("Unfollow");
         }
+        
+        if(model.UserLain.getFoto() == null && model.UserLain.getVideo() == null){
+            view.getViewFotoUserField().setText("Tidak memiliki foto/video");
+        }else if(model.UserLain.getFoto() == null && model.UserLain.getVideo() != null){
+            view.getViewFotoUserField().setText(model.ViewVideo());
+        }else if (model.UserLain.getFoto() != null && model.UserLain.getVideo() == null){
+            view.getViewFotoUserField().setText(model.ViewFoto());
+        }
     }
 
     @Override

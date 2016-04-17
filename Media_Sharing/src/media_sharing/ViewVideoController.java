@@ -20,9 +20,10 @@ public class ViewVideoController extends MouseAdapter implements ActionListener{
     private ViewVideo view;
     private Video video;
 
-    public ViewVideoController(Console model, ViewVideo view) {
+    public ViewVideoController(Console model, ViewVideo view, Video video) {
         this.model = model;
         this.view = view;
+        this.video = video;
         this.view.setController(this);
         this.view.setVisible(true);
         this.view.getjLabel2().setText(video.getNama());
@@ -69,8 +70,7 @@ public class ViewVideoController extends MouseAdapter implements ActionListener{
             view.setVisible(false);
             view.dispose();
         } else if (source.equals(view.getDeleteVideoButton())){
-            Akun n;
-            model.UserAkun.getFoto().remove(model.UserAkun.searchFoto2(video.getNama()));
+            model.UserAkun.removeMediaVideo(video);
             JOptionPane.showMessageDialog(view, "Video telah dihapus");
             HalamanUserSendiri HUS = new HalamanUserSendiri();
             HUS.setController(new UserSendiriController(model, new HalamanUserSendiri()));
