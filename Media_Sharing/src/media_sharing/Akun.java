@@ -369,7 +369,8 @@ public class Akun {
     //========================================================================//
     
     public String toString(){
-        String akun = "Username : "+getNamaAkun();
+        String akun = "Username : "+getNamaAkun()
+                +"\n ";
         return akun;
     }
 

@@ -121,15 +121,17 @@ public class Console {
     public String ViewFoto(){
         String s ="";
         for(Foto f: UserAkun.getFoto()){
-            s = f.toString();
+            s += f.toString();
         }
+        System.out.println("hai");
+        System.out.println(s);
         return s;
     }
     
     public String ViewVideo(){
         String s = "";
         for(Video v:UserAkun.getVideo()){
-            s = v.toString();
+            s = v.toString() + "\t";
         }
         return s;
     }
@@ -137,7 +139,7 @@ public class Console {
     public String ViewFriend(){
         String s = "";
         for(Akun c:UserAkun.getFriends()){
-            s = c.toString();
+            s += c.toString();
         }
         return s;
     }
