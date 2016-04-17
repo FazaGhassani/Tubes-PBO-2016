@@ -28,7 +28,7 @@ public class ViewFotoController extends MouseAdapter implements ActionListener{
         this.view.setVisible(true);
         this.view.MouseListener(this);
         this.view.getjLabel2().setText(foto.getNama());
-        //display
+        this.view.getViewFotoUserField().setText(foto.toString());
     }
 
     @Override

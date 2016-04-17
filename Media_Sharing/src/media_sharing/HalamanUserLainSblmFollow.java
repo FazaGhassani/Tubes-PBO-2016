@@ -8,6 +8,7 @@ package media_sharing;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -40,9 +41,10 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         FollowButton = new javax.swing.JButton();
-        ViewFotoUserField = new javax.swing.JTextField();
         VButton = new javax.swing.JButton();
         FButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ViewFotoUserField = new javax.swing.JTextArea();
 
         jTextField8.setText("jTextField2");
 
@@ -68,6 +70,10 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
 
         FButton.setText("F");
 
+        ViewFotoUserField.setColumns(20);
+        ViewFotoUserField.setRows(5);
+        jScrollPane1.setViewportView(ViewFotoUserField);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,11 +83,11 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(ViphoLabel)
-                        .addGap(70, 70, 70)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(SearchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(OkButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(VButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FButton)
@@ -89,15 +95,14 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
                         .addComponent(LogoutButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ViewFotoUserField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(FollowButton))
-                                .addGap(280, 280, 280)))))
+                                    .addComponent(FollowButton))))))
                 .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
@@ -118,9 +123,9 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(FollowButton))
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ViewFotoUserField, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -169,9 +174,10 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
     private javax.swing.JButton OkButton;
     private javax.swing.JTextField SearchLabel;
     private javax.swing.JButton VButton;
-    private javax.swing.JTextField ViewFotoUserField;
+    private javax.swing.JTextArea ViewFotoUserField;
     private javax.swing.JLabel ViphoLabel;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
@@ -244,7 +250,7 @@ public class HalamanUserLainSblmFollow extends javax.swing.JFrame {
         return ViphoLabel;
     }
 
-    public JTextField getViewFotoUserField() {
+    public JTextArea getViewFotoUserField() {
         return ViewFotoUserField;
     }
      

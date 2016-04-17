@@ -8,6 +8,7 @@ package media_sharing;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -39,11 +40,11 @@ public class ViewFoto extends javax.swing.JFrame {
         OkButton = new javax.swing.JButton();
         VButton = new javax.swing.JButton();
         FButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        VideoArea = new javax.swing.JTextArea();
         ViphoLabel = new javax.swing.JLabel();
         SearchLabel = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ViewFotoUserField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,11 +68,6 @@ public class ViewFoto extends javax.swing.JFrame {
 
         FButton.setText("F");
 
-        VideoArea.setColumns(20);
-        VideoArea.setRows(5);
-        VideoArea.setAlignmentX(3.0F);
-        jScrollPane1.setViewportView(VideoArea);
-
         ViphoLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ViphoLabel.setText("VIPHO");
 
@@ -79,12 +75,16 @@ public class ViewFoto extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
+        ViewFotoUserField.setColumns(20);
+        ViewFotoUserField.setRows(5);
+        jScrollPane2.setViewportView(ViewFotoUserField);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(ViphoLabel)
                 .addGap(35, 35, 35)
                 .addComponent(SearchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,20 +96,19 @@ public class ViewFoto extends javax.swing.JFrame {
                 .addComponent(FButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LogoutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(TagPersonButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(DeleteTagButton)
-                                .addComponent(DeleteFotoButton)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TagPersonButton)
+                        .addGap(155, 155, 155)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DeleteTagButton)
+                            .addComponent(DeleteFotoButton)))
+                    .addComponent(jScrollPane2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +124,8 @@ public class ViewFoto extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TagPersonButton)
                     .addComponent(DeleteTagButton))
@@ -186,10 +185,10 @@ public class ViewFoto extends javax.swing.JFrame {
     private javax.swing.JTextField SearchLabel;
     private javax.swing.JButton TagPersonButton;
     private javax.swing.JButton VButton;
-    private javax.swing.JTextArea VideoArea;
+    private javax.swing.JTextArea ViewFotoUserField;
     private javax.swing.JLabel ViphoLabel;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     public JButton getOkButton() {
@@ -230,6 +229,10 @@ public class ViewFoto extends javax.swing.JFrame {
 
     public JLabel getjLabel2() {
         return jLabel2;
+    }
+
+    public JTextArea getViewFotoUserField() {
+        return ViewFotoUserField;
     }
 
     public void setViphoLabel(JLabel ViphoLabel) {
