@@ -121,25 +121,25 @@ public class Console {
     public String ViewFoto(){
         String s ="";
         for(Foto f: UserAkun.getFoto()){
-            return s = f.toString();
+            s = f.toString();
         }
-        return s = "";
+        return s;
     }
     
     public String ViewVideo(){
         String s = "";
         for(Video v:UserAkun.getVideo()){
-            return s = v.toString();
+            s = v.toString();
         }
-        return s = "";
+        return s;
     }
     
     public String ViewFriend(){
         String s = "";
         for(Akun c:UserAkun.getFriends()){
-            return c.toString();
+            s = c.toString();
         }
-        return s = "";
+        return s;
     }
     
     public String ViewTaggedFoto(Foto f){
