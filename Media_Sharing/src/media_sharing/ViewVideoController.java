@@ -27,7 +27,7 @@ public class ViewVideoController extends MouseAdapter implements ActionListener{
         this.view.setController(this);
         this.view.setVisible(true);
         this.view.getjLabel2().setText(video.getNama());
-        //display
+        this.view.getVideoArea().setText(video.toString());
     }
     
     @Override

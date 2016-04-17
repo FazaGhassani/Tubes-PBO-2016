@@ -8,6 +8,7 @@ package media_sharing;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -229,6 +230,10 @@ public class ViewVideo extends javax.swing.JFrame {
 
     public JLabel getjLabel2() {
         return jLabel2;
+    }
+
+    public JTextArea getVideoArea() {
+        return VideoArea;
     }
 
     public void setViphoLabel(JLabel ViphoLabel) {
